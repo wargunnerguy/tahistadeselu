@@ -139,12 +139,13 @@ async function submit() {
   }
   status.value = 'sending'
   try {
-    await fetch(url, {
+    const res  = await fetch(url, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ type: 'kontakt', ...form }),
     })
+    const json = await res.json()
+    if (!json.success) throw new Error(json.error || 'server error')
     status.value = 'success'
   } catch {
     status.value = 'error'
