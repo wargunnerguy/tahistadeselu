@@ -1,0 +1,216 @@
+{
+  "nav": {
+    "home": "Tähistades Elu",
+    "meist": "About",
+    "teenused": "Services",
+    "pood": "Shop",
+    "broneeri": "Book",
+    "kontakt": "Contact",
+    "close": "Close menu",
+    "open": "Open menu"
+  },
+  "home": {
+    "eyebrow": "Life celebration agency",
+    "title": "Life deserves\ncelebration",
+    "subtitle": "We help you honour your loved one's life with joy and love.",
+    "cta": "Book a consultation",
+    "scroll": "Scroll down",
+    "values": {
+      "personal": {
+        "title": "Personal approach",
+        "body": "Every ceremony is as unique as the person it honours. We listen, understand, and create exactly what your family needs."
+      },
+      "joyful": {
+        "title": "Carried by joy",
+        "body": "We celebrate life, not mourn death. Our ceremonies are warm, beautiful, and full of memories that stay in the heart."
+      },
+      "fullService": {
+        "title": "Everything in one place",
+        "body": "We take care of everything — from coordination to flowers. You can simply be present, not worry about the details."
+      }
+    },
+    "quote": "\"Every life is a unique story — it deserves a beautiful final chord.\""
+  },
+  "meist": {
+    "eyebrow": "About",
+    "title": "Every life is\na unique story",
+    "story": {
+      "label": "Our story",
+      "lead": "Funerals don't have to be purely grief ceremonies. They can be celebrations — full of love, memories, and life.",
+      "body1": "Tähistades Elu was born from a desire to turn this difficult moment into something beautiful. We've seen how a well-crafted ceremony can transform grief into gratitude — and tears into smiles.",
+      "body2": "For us, this is not just work. Every family, every story, every ceremony is an honour and a responsibility."
+    },
+    "team": {
+      "label": "Who we are",
+      "founderName": "[Your name, founder]",
+      "founderBio": "[Your personal story — why you chose this work, what matters to you, your vision. Replace with your own words.]",
+      "valuesTitle": "Our values",
+      "values": [
+        "Every person deserves a dignified and personal farewell",
+        "Joy and love are always present alongside grief",
+        "Families shouldn't worry — we take care of everything",
+        "Honesty, warmth, and attention at every step"
+      ]
+    },
+    "cta": {
+      "eyebrow": "Let's start a conversation",
+      "title": "Let's talk about how we can help.",
+      "button": "Book a consultation"
+    }
+  },
+  "teenused": {
+    "eyebrow": "Services",
+    "title": "Together we choose\nthe right path",
+    "subtitle": "Every family has its own needs. We've created three packages — but everything can be personalised.",
+    "popularBadge": "Most chosen",
+    "premiumLabel": "Complete experience",
+    "fromPrice": "From",
+    "bookBtn": "Book",
+    "note": "All packages can be supplemented with additional services. We'll discuss the details during your consultation.",
+    "packages": {
+      "saatmine": {
+        "name": "Farewell",
+        "tagline": "Dignity and care",
+        "description": "Everything needed for your loved one to receive a dignified and warm send-off — without worrying about the arrangements.",
+        "price": "€ 1,490",
+        "includes": [
+          "Personal ceremony coordinator",
+          "Venue finding and coordination",
+          "Catering and refreshments",
+          "Basic floral arrangement",
+          "Ceremony programme and schedule",
+          "Sound equipment rental and setup"
+        ]
+      },
+      "malestus": {
+        "name": "Remembrance",
+        "tagline": "Life's story in image and word",
+        "description": "Beyond full ceremony coordination, we create a beautiful memorial film of your loved one's life — something the family will treasure forever.",
+        "price": "€ 2,490",
+        "includes": [
+          "Everything in the Farewell package",
+          "Memorial film from family photos and videos",
+          "Personalised ceremony script writing",
+          "Documentary ceremony photography",
+          "\"My Story\" workbook (1 copy)"
+        ]
+      },
+      "parand": {
+        "name": "Legacy",
+        "tagline": "A complete and lasting experience",
+        "description": "Our most complete service — including everything above, plus a professional celebrant, live stream, permanent memorial website, and much more.",
+        "price": "€ 3,990",
+        "includes": [
+          "Everything in the Remembrance package",
+          "Professional ceremony celebrant",
+          "Live stream for distant family",
+          "Permanent digital memorial page",
+          "Grief support session for the family",
+          "Short tribute video for social media",
+          "Anniversary memorial card one year later",
+          "\"My Story\" workbook (2 copies, premium binding)"
+        ]
+      }
+    }
+  },
+  "pood": {
+    "eyebrow": "Shop",
+    "title": "Workbook\n\"My Story\"",
+    "subtitle": "A personal journal for capturing your life, wishes, and letters — for those who remain.",
+    "whatLabel": "What is \"My Story\"?",
+    "whatLead": "\"My Story\" is a thoughtfully designed journal where a person can write down their life story, final wishes, and letters to loved ones.",
+    "whatBody": "The journal offers time and space — it can be written over years, added to gradually. The completed journal is an invaluable legacy for the family: your real words, your real story.",
+    "chaptersLabel": "Inside the workbook",
+    "chapters": [
+      { "title": "My life", "desc": "Childhood, love, most important moments" },
+      { "title": "My wishes", "desc": "Final wishes and arrangements" },
+      { "title": "Letters", "desc": "Personal letters to loved ones" },
+      { "title": "Memories", "desc": "Favourite stories and places" },
+      { "title": "My legacy", "desc": "What I leave behind" }
+    ],
+    "specLabel": "Product details",
+    "specs": [
+      "A5 format, 200 pages",
+      "Bound, linen cover",
+      "Writing space and photo pages",
+      "Available in Estonian and English"
+    ],
+    "price": "€ 35",
+    "priceNote": "Included in Remembrance and Legacy packages",
+    "packagesLabel": "Included in packages",
+    "inPackages": ["Remembrance", "Legacy"],
+    "buyBtn": "Order workbook",
+    "buyNote": "Available online and in bookshops. Order directly from us.",
+    "orderLabel": "Order",
+    "orderTitle": "Order a workbook",
+    "orderSubtitle": "Fill in the form and we'll be in touch.",
+    "form": {
+      "name": "Name *",
+      "namePlaceholder": "Your name",
+      "email": "Email *",
+      "emailPlaceholder": "you@email.com",
+      "qty": "Quantity",
+      "submit": "Send order",
+      "sending": "Sending...",
+      "successEyebrow": "Sent",
+      "successTitle": "Order received!",
+      "successBody": "We'll be in touch as soon as possible.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "broneeri": {
+    "eyebrow": "Booking",
+    "title": "Let's start a conversation",
+    "subtitle": "Fill in the form and we'll be in touch within 24 hours.",
+    "form": {
+      "name": "Name *",
+      "namePlaceholder": "Your name",
+      "email": "Email *",
+      "emailPlaceholder": "you@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+372 5000 0000",
+      "date": "Ceremony date",
+      "info": "Additional information",
+      "infoPlaceholder": "Briefly describe your wishes and needs...",
+      "submit": "Send enquiry",
+      "sending": "Sending...",
+      "successEyebrow": "Sent",
+      "successTitle": "Thank you! We've received your enquiry.",
+      "successBody": "We'll be in touch within 24 hours.",
+      "error": "Something went wrong. Please try again or write to us directly."
+    }
+  },
+  "kontakt": {
+    "eyebrow": "Contact",
+    "title": "Let's talk",
+    "infoLabel": "Get in touch",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "location": "Estonia",
+    "hoursLabel": "Hours",
+    "hours": "Monday – Friday: 9:00 – 18:00",
+    "hoursEmergency": "In emergencies we are available around the clock.",
+    "form": {
+      "name": "Name *",
+      "namePlaceholder": "Your name",
+      "email": "Email *",
+      "emailPlaceholder": "you@email.com",
+      "message": "Message *",
+      "messagePlaceholder": "How can we help?",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "successEyebrow": "Sent",
+      "successTitle": "Thank you! We'll reply soon.",
+      "successBody": "We'll be in touch as soon as possible.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "tagline": "\"Life deserves celebration.\"",
+    "contactLabel": "Contact",
+    "pagesLabel": "Pages",
+    "copyright": "© {year} Tähistades Elu. All rights reserved.",
+    "country": "Estonia"
+  }
+}

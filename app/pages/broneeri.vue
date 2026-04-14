@@ -3,12 +3,12 @@
     <!-- Page header -->
     <section class="pt-40 pb-20 px-6 bg-stone-50">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="text-xs tracking-[0.35em] uppercase text-stone-400 mb-4">Broneering</p>
+        <p class="text-xs tracking-[0.35em] uppercase text-stone-400 mb-4">{{ $t('broneeri.eyebrow') }}</p>
         <h1 class="text-4xl md:text-6xl font-extralight text-stone-800 tracking-[0.08em] uppercase leading-tight">
-          Alustame vestlusega
+          {{ $t('broneeri.title') }}
         </h1>
         <p class="mt-8 text-base text-stone-500 font-light max-w-lg mx-auto leading-relaxed">
-          Täitke päring ja me võtame teiega ühendust 24 tunni jooksul.
+          {{ $t('broneeri.subtitle') }}
         </p>
       </div>
     </section>
@@ -19,52 +19,51 @@
 
         <!-- Success -->
         <div v-if="status === 'success'" class="text-center py-16">
-          <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">Saadetud</p>
+          <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">{{ $t('broneeri.form.successEyebrow') }}</p>
           <h2 class="text-2xl font-extralight text-stone-700 mb-6 tracking-wide">
-            Täname! Päring on käes.
+            {{ $t('broneeri.form.successTitle') }}
           </h2>
           <p class="text-stone-500 font-light text-sm leading-relaxed">
-            Võtame teiega ühendust 24 tunni jooksul.
+            {{ $t('broneeri.form.successBody') }}
           </p>
         </div>
 
-        <!-- Form -->
         <form v-else class="space-y-10" @submit.prevent="submit">
 
           <div>
-            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">Nimi *</label>
+            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.name') }}</label>
             <input
               v-model="form.nimi"
               type="text"
               required
-              placeholder="Teie nimi"
+              :placeholder="$t('broneeri.form.namePlaceholder')"
               class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
             />
           </div>
 
           <div>
-            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">E-post *</label>
+            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.email') }}</label>
             <input
               v-model="form.epost"
               type="email"
               required
-              placeholder="teie@email.ee"
+              :placeholder="$t('broneeri.form.emailPlaceholder')"
               class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
             />
           </div>
 
           <div>
-            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">Telefon</label>
+            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.phone') }}</label>
             <input
               v-model="form.telefon"
               type="tel"
-              placeholder="+372 5000 0000"
+              :placeholder="$t('broneeri.form.phonePlaceholder')"
               class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
             />
           </div>
 
           <div>
-            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">Tseremoonia kuupäev</label>
+            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.date') }}</label>
             <input
               v-model="form.kuupaev"
               type="date"
@@ -73,18 +72,17 @@
           </div>
 
           <div>
-            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">Lisainfo</label>
+            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.info') }}</label>
             <textarea
               v-model="form.lisainfo"
               rows="4"
-              placeholder="Kirjeldage lühidalt oma soove ja vajadusi..."
+              :placeholder="$t('broneeri.form.infoPlaceholder')"
               class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm resize-none"
             />
           </div>
 
-          <!-- Error -->
           <p v-if="status === 'error'" class="text-red-400 text-xs tracking-wide">
-            Midagi läks valesti. Palun proovige uuesti või kirjutage meile otse.
+            {{ $t('broneeri.form.error') }}
           </p>
 
           <button
@@ -92,7 +90,7 @@
             :disabled="status === 'sending'"
             class="w-full border border-stone-800 text-stone-800 text-xs tracking-[0.25em] uppercase py-4 hover:bg-stone-800 hover:text-white transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {{ status === 'sending' ? 'Saatmine...' : 'Saada päring' }}
+            {{ status === 'sending' ? $t('broneeri.form.sending') : $t('broneeri.form.submit') }}
           </button>
         </form>
       </div>
@@ -101,6 +99,8 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
 const form = reactive({
   nimi: '',
   epost: '',
@@ -119,8 +119,7 @@ async function submit() {
   }
   status.value = 'sending'
   try {
-    // text/plain avoids CORS preflight — GAS handles it, response is readable
-    const res  = await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ type: 'broneering', ...form }),

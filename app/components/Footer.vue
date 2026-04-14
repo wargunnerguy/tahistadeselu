@@ -5,26 +5,26 @@
 
         <!-- Brand -->
         <div class="md:col-span-1">
-          <NuxtLink to="/" class="text-sm font-light tracking-[0.25em] uppercase text-white hover:opacity-60 transition-opacity">
+          <NuxtLink :to="localePath('/')" class="text-sm font-light tracking-[0.25em] uppercase text-white hover:opacity-60 transition-opacity">
             Tähistades Elu
           </NuxtLink>
           <p class="mt-4 text-stone-400 font-light text-sm leading-relaxed italic">
-            „Elu väärib tähistamist."
+            {{ $t('footer.tagline') }}
           </p>
         </div>
 
         <!-- Contact -->
         <div class="md:col-span-1">
-          <p class="text-xs tracking-[0.25em] uppercase text-stone-500 mb-5">Kontakt</p>
+          <p class="text-xs tracking-[0.25em] uppercase text-stone-500 mb-5">{{ $t('footer.contactLabel') }}</p>
           <ul class="space-y-3 text-sm font-light">
             <li>
               <a href="tel:+37200000000" class="text-stone-300 hover:text-white transition-colors">
-                +372 000 0000 <!-- Asendage -->
+                +372 000 0000
               </a>
             </li>
             <li>
               <a href="mailto:info@tahistadeselu.ee" class="text-stone-300 hover:text-white transition-colors">
-                info@tahistadeselu.ee <!-- Asendage -->
+                info@tahistadeselu.ee
               </a>
             </li>
             <li>
@@ -37,14 +37,14 @@
 
         <!-- Nav -->
         <div class="md:col-span-1">
-          <p class="text-xs tracking-[0.25em] uppercase text-stone-500 mb-5">Leheküljed</p>
+          <p class="text-xs tracking-[0.25em] uppercase text-stone-500 mb-5">{{ $t('footer.pagesLabel') }}</p>
           <ul class="space-y-3">
-            <li v-for="link in links" :key="link.to">
+            <li v-for="link in links" :key="link.key">
               <NuxtLink
-                :to="link.to"
+                :to="localePath(link.to)"
                 class="text-sm font-light text-stone-300 hover:text-white transition-colors tracking-wide"
               >
-                {{ link.label }}
+                {{ $t(link.key) }}
               </NuxtLink>
             </li>
           </ul>
@@ -54,10 +54,10 @@
       <!-- Bottom bar -->
       <div class="mt-16 pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="text-stone-500 text-xs tracking-wide">
-          &copy; 2025 Tähistades Elu. Kõik õigused kaitstud.
+          {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
         </p>
         <p class="text-stone-600 text-xs tracking-wide">
-          Eesti
+          {{ $t('footer.country') }}
         </p>
       </div>
     </div>
@@ -65,10 +65,13 @@
 </template>
 
 <script setup lang="ts">
+const localePath = useLocalePath()
+
 const links = [
-  { to: '/meist', label: 'Meist' },
-  { to: '/teenused', label: 'Teenused' },
-  { to: '/broneeri', label: 'Broneeri' },
-  { to: '/kontakt', label: 'Kontakt' },
+  { to: '/meist', key: 'nav.meist' },
+  { to: '/teenused', key: 'nav.teenused' },
+  { to: '/pood', key: 'nav.pood' },
+  { to: '/broneeri', key: 'nav.broneeri' },
+  { to: '/kontakt', key: 'nav.kontakt' },
 ]
 </script>

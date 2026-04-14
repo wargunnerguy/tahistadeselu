@@ -3,9 +3,9 @@
     <!-- Page header -->
     <section class="pt-40 pb-20 px-6 bg-stone-50">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="text-xs tracking-[0.35em] uppercase text-stone-400 mb-4">Kontakt</p>
+        <p class="text-xs tracking-[0.35em] uppercase text-stone-400 mb-4">{{ $t('kontakt.eyebrow') }}</p>
         <h1 class="text-4xl md:text-6xl font-extralight text-stone-800 tracking-[0.08em] uppercase leading-tight">
-          Räägime
+          {{ $t('kontakt.title') }}
         </h1>
       </div>
     </section>
@@ -16,40 +16,40 @@
         <!-- Contact info -->
         <div class="space-y-12">
           <div>
-            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-6">Ühendust saab</p>
+            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-6">{{ $t('kontakt.infoLabel') }}</p>
             <ul class="space-y-6">
               <li>
-                <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">Telefon</p>
+                <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">{{ $t('kontakt.phoneLabel') }}</p>
                 <a
                   href="tel:+37200000000"
                   class="text-stone-700 font-light text-sm hover:text-stone-400 transition-colors"
                 >
-                  +372 000 0000 <!-- Asendage oma numbriga -->
+                  +372 000 0000
                 </a>
               </li>
               <li>
-                <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">E-post</p>
+                <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">{{ $t('kontakt.emailLabel') }}</p>
                 <a
                   href="mailto:info@tahistadeselu.ee"
                   class="text-stone-700 font-light text-sm hover:text-stone-400 transition-colors"
                 >
-                  info@tahistadeselu.ee <!-- Asendage oma e-postiga -->
+                  info@tahistadeselu.ee
                 </a>
               </li>
               <li>
-                <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">Asukoht</p>
+                <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">{{ $t('kontakt.locationLabel') }}</p>
                 <p class="text-stone-700 font-light text-sm">
-                  Eesti <!-- Täpne aadress siia -->
+                  {{ $t('kontakt.location') }}
                 </p>
               </li>
             </ul>
           </div>
 
           <div>
-            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">Tööaeg</p>
+            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">{{ $t('kontakt.hoursLabel') }}</p>
             <p class="text-stone-500 font-light text-sm leading-relaxed">
-              Esmaspäev – reede: 9:00 – 18:00<br />
-              Hädaolukordades oleme kättesaadavad ööpäevaringselt.
+              {{ $t('kontakt.hours') }}<br />
+              {{ $t('kontakt.hoursEmergency') }}
             </p>
           </div>
         </div>
@@ -58,54 +58,52 @@
         <div>
           <!-- Success -->
           <div v-if="status === 'success'" class="py-10">
-            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">Saadetud</p>
+            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">{{ $t('kontakt.form.successEyebrow') }}</p>
             <h2 class="text-xl font-extralight text-stone-700 mb-4 tracking-wide">
-              Täname! Vastame peagi.
+              {{ $t('kontakt.form.successTitle') }}
             </h2>
             <p class="text-stone-500 font-light text-sm">
-              Võtame teiega ühendust esimesel võimalusel.
+              {{ $t('kontakt.form.successBody') }}
             </p>
           </div>
 
-          <!-- Form -->
           <form v-else class="space-y-10" @submit.prevent="submit">
 
             <div>
-              <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">Nimi *</label>
+              <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('kontakt.form.name') }}</label>
               <input
                 v-model="form.nimi"
                 type="text"
                 required
-                placeholder="Teie nimi"
+                :placeholder="$t('kontakt.form.namePlaceholder')"
                 class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
               />
             </div>
 
             <div>
-              <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">E-post *</label>
+              <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('kontakt.form.email') }}</label>
               <input
                 v-model="form.epost"
                 type="email"
                 required
-                placeholder="teie@email.ee"
+                :placeholder="$t('kontakt.form.emailPlaceholder')"
                 class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
               />
             </div>
 
             <div>
-              <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">Sõnum *</label>
+              <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('kontakt.form.message') }}</label>
               <textarea
                 v-model="form.sonum"
                 rows="5"
                 required
-                placeholder="Kuidas saame aidata?"
+                :placeholder="$t('kontakt.form.messagePlaceholder')"
                 class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm resize-none"
               />
             </div>
 
-            <!-- Error -->
             <p v-if="status === 'error'" class="text-red-400 text-xs tracking-wide">
-              Midagi läks valesti. Palun proovige uuesti.
+              {{ $t('kontakt.form.error') }}
             </p>
 
             <button
@@ -113,7 +111,7 @@
               :disabled="status === 'sending'"
               class="w-full border border-stone-800 text-stone-800 text-xs tracking-[0.25em] uppercase py-4 hover:bg-stone-800 hover:text-white transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {{ status === 'sending' ? 'Saatmine...' : 'Saada sõnum' }}
+              {{ status === 'sending' ? $t('kontakt.form.sending') : $t('kontakt.form.submit') }}
             </button>
           </form>
         </div>
@@ -123,6 +121,8 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
+
 const form = reactive({
   nimi: '',
   epost: '',
@@ -139,7 +139,7 @@ async function submit() {
   }
   status.value = 'sending'
   try {
-    const res  = await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ type: 'kontakt', ...form }),

@@ -8,9 +8,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "gh-pages -d dist"
+    "deploy": "node -e \"const fs=require('fs');fs.copyFileSync('dist/index.html','dist/404.html')\" && gh-pages -d dist"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^9.5.6",
     "nuxt": "^4.4.2",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
