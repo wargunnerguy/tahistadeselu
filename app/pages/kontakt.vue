@@ -21,10 +21,10 @@
               <li>
                 <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">{{ $t('kontakt.phoneLabel') }}</p>
                 <a
-                  href="tel:+37200000000"
+                  href="tel:+37256875675"
                   class="text-stone-700 font-light text-sm hover:text-stone-400 transition-colors"
                 >
-                  +372 000 0000
+                  +372 5687 5675
                 </a>
               </li>
               <li>

@@ -18,8 +18,8 @@
           <p class="text-xs tracking-[0.25em] uppercase text-stone-500 mb-5">{{ $t('footer.contactLabel') }}</p>
           <ul class="space-y-3 text-sm font-light">
             <li>
-              <a href="tel:+37200000000" class="text-stone-300 hover:text-white transition-colors">
-                +372 000 0000
+              <a href="tel:+37256875675" class="text-stone-300 hover:text-white transition-colors">
+                +372 5687 5675
               </a>
             </li>
             <li>

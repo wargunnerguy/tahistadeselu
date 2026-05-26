@@ -213,7 +213,7 @@
           {{ $t('home.finalCta.btn') }}
         </NuxtLink>
         <div data-reveal data-delay="380" class="flex items-center justify-center gap-8 text-stone-500 text-sm font-light">
-          <a href="tel:+37200000000" class="hover:text-white transition-colors duration-200">+372 000 0000</a>
+          <a href="tel:+37256875675" class="hover:text-white transition-colors duration-200">+372 5687 5675</a>
           <span class="text-stone-700">—</span>
           <a href="mailto:info@tahistadeselu.ee" class="hover:text-white transition-colors duration-200">info@tahistadeselu.ee</a>
         </div>
