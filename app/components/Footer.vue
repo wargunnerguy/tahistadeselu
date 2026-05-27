@@ -23,8 +23,8 @@
               </a>
             </li>
             <li>
-              <a href="mailto:info@tahistadeselu.ee" class="text-stone-300 hover:text-white transition-colors">
-                info@tahistadeselu.ee
+              <a href="mailto:tahistadeselu@gmail.com" class="text-stone-300 hover:text-white transition-colors">
+                tahistadeselu@gmail.com
               </a>
             </li>
             <li>
