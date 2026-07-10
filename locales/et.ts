@@ -166,6 +166,7 @@ export default {
             'vastame kõikidele tekkinud küsimustele',
           ],
           notes: [],
+          cta: 'Broneeri tasuta kohtumine',
         },
         {
           title: 'Enda elu tähistamise tseremoonia eelplaneerimine',
@@ -185,6 +186,7 @@ export default {
             'Kohale tulek Tartu linnas on tasuta. Mujal Eestis kokkuleppel.',
             'Soovi korral on võimalik lisatasu eest luua personaalne mälestusvideo või jäädvustada videopöördumine lähedastele.',
           ],
+          cta: 'Soovin eelplaneerida',
         },
         {
           title: 'Elu tähistamise tseremoonia korraldamine',
@@ -201,6 +203,7 @@ export default {
           notes: [
             'Korraldame soovi korral kogu protsessi algusest lõpuni, kaasates usaldusväärsed koostööpartnerid (tseremoonia läbiviimine, ruumid, muusika, toitlustus, tehniline lahendus, lilleseaded jm).',
           ],
+          cta: 'Küsi pakkumist',
         },
       ],
     },

@@ -166,6 +166,7 @@ export default {
             'we answer all your questions',
           ],
           notes: [],
+          cta: 'Book a free meeting',
         },
         {
           title: 'Pre-planning your own celebration-of-life ceremony',
@@ -185,6 +186,7 @@ export default {
             'Visits within the city of Tartu are free of charge. Elsewhere in Estonia by agreement.',
             'For an additional fee, we can create a personal memorial video or record a video message for your loved ones.',
           ],
+          cta: 'Start pre-planning',
         },
         {
           title: 'Organising a celebration-of-life ceremony',
@@ -201,6 +203,7 @@ export default {
           notes: [
             'If you wish, we organise the entire process from start to finish, involving trusted partners (ceremony conducting, venues, music, catering, technical solutions, floral arrangements, and more).',
           ],
+          cta: 'Request a quote',
         },
       ],
     },

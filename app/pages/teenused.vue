@@ -78,23 +78,46 @@
           {{ $t('teenused.pricing.intro') }}
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           <div
             v-for="(item, i) in pricingItems"
             :key="i"
-            class="flex flex-col border border-stone-200 bg-white p-10 h-full"
+            :class="[
+              'flex flex-col p-10 h-full transition-shadow duration-300 hover:shadow-xl',
+              i === 0 ? 'bg-stone-900' : 'bg-white border border-stone-200 hover:border-stone-400',
+            ]"
           >
-            <h2 class="text-base tracking-[0.1em] uppercase font-light text-stone-800 mb-4 min-h-[48px]">
+            <span
+              :class="[
+                'text-6xl font-extralight tracking-tighter leading-none mb-8',
+                i === 0 ? 'text-stone-700' : 'text-stone-200',
+              ]"
+            >{{ String(i + 1).padStart(2, '0') }}</span>
+
+            <h2
+              :class="[
+                'text-base tracking-[0.1em] uppercase font-light mb-5 min-h-[48px]',
+                i === 0 ? 'text-white' : 'text-stone-800',
+              ]"
+            >
               {{ item.title }}
             </h2>
-            <p class="text-3xl font-extralight text-stone-700 tracking-wide">
+            <p
+              :class="[
+                'text-4xl font-extralight tracking-wide',
+                i === 0 ? 'text-white' : 'text-stone-700',
+              ]"
+            >
               {{ item.price }}
             </p>
-            <p v-if="item.priceNote" class="text-xs tracking-[0.15em] uppercase text-stone-400 mt-1">
+            <p v-if="item.priceNote" class="text-xs tracking-[0.15em] uppercase text-stone-400 mt-2">
               {{ item.priceNote }}
             </p>
 
-            <p v-if="item.description" class="text-stone-500 font-light text-sm leading-relaxed mt-6">
+            <p
+              v-if="item.description"
+              :class="['font-light text-sm leading-relaxed mt-6', i === 0 ? 'text-stone-300' : 'text-stone-500']"
+            >
               {{ item.description }}
             </p>
 
@@ -105,14 +128,17 @@
               <li
                 v-for="(entry, j) in item.list"
                 :key="j"
-                class="flex items-start gap-3 text-sm font-light text-stone-500"
+                :class="['flex items-start gap-3 text-sm font-light', i === 0 ? 'text-stone-300' : 'text-stone-500']"
               >
-                <span class="mt-0.5 flex-shrink-0 text-stone-300">—</span>
+                <span :class="['mt-0.5 flex-shrink-0', i === 0 ? 'text-stone-600' : 'text-stone-300']">—</span>
                 <span>{{ entry }}</span>
               </li>
             </ul>
 
-            <div v-if="item.notes && item.notes.length" class="mt-8 border-t border-stone-100 pt-6 space-y-3">
+            <div
+              v-if="item.notes && item.notes.length"
+              :class="['mt-8 border-t pt-6 space-y-3', i === 0 ? 'border-stone-700' : 'border-stone-100']"
+            >
               <p
                 v-for="(note, j) in item.notes"
                 :key="j"
@@ -121,6 +147,18 @@
                 {{ note }}
               </p>
             </div>
+
+            <NuxtLink
+              :to="ctaTargets[i]"
+              :class="[
+                'mt-10 text-center text-xs tracking-[0.25em] uppercase px-6 py-4 transition-all duration-300',
+                i === 0
+                  ? 'bg-white text-stone-900 hover:bg-stone-100'
+                  : 'border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white',
+              ]"
+            >
+              {{ item.cta }}
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -161,9 +199,19 @@ interface PricingItem {
   listLabel: string
   list: string[]
   notes?: string[]
+  cta: string
 }
 
 const services = computed(() => tm('teenused.services.items') as ServiceItem[])
 const pricingItems = computed(() => tm('teenused.pricing.items') as PricingItem[])
+
+const localePath = useLocalePath()
+
+// Free meeting → plain booking; paid tiers pre-select the ceremony type
+const ctaTargets = computed(() => [
+  { path: localePath('/broneeri') },
+  { path: localePath('/broneeri'), query: { type: 'plan' } },
+  { path: localePath('/broneeri'), query: { type: 'organize' } },
+])
 
 </script>
