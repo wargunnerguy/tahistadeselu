@@ -264,6 +264,7 @@ export default {
     subtitle: "The first meeting (up to 45 minutes) is always free. Fill in the form and we'll be in touch within one business day.",
     form: {
       type: 'My wish *',
+      typeMeeting: 'I would like a free first meeting (up to 45 minutes)',
       typePlan: 'I want to plan my own celebration-of-life ceremony',
       typeOrganize: 'I want to arrange a celebration-of-life ceremony for a loved one',
       name: 'Name *',

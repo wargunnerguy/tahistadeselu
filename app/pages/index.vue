@@ -228,7 +228,7 @@
         <NuxtLink
           data-reveal
           data-delay="280"
-          :to="localePath('/broneeri')"
+          :to="{ path: localePath('/broneeri'), query: { type: 'meeting' } }"
           class="inline-block bg-white text-stone-900 text-xs tracking-[0.3em] uppercase px-12 py-4 hover:bg-stone-100 transition-colors duration-300 mb-14"
         >
           {{ $t('home.finalCta.btn') }}

@@ -160,6 +160,7 @@ useSeoMeta({
 })
 
 const typeOptions = computed(() => [
+  { value: 'meeting', label: t('broneeri.form.typeMeeting') },
   { value: 'plan', label: t('broneeri.form.typePlan') },
   { value: 'organize', label: t('broneeri.form.typeOrganize') },
 ])
@@ -178,7 +179,7 @@ const form = reactive({
 // Pre-select on the client only, so prerendered HTML matches initial hydration
 onMounted(() => {
   const type = route.query.type
-  if (type === 'plan' || type === 'organize') form.tseremoonia = type
+  if (type === 'meeting' || type === 'plan' || type === 'organize') form.tseremoonia = type
 })
 
 const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')

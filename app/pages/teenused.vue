@@ -207,9 +207,9 @@ const pricingItems = computed(() => tm('teenused.pricing.items') as PricingItem[
 
 const localePath = useLocalePath()
 
-// Free meeting → plain booking; paid tiers pre-select the ceremony type
+// Each pricing card pre-selects its matching option on the booking form
 const ctaTargets = computed(() => [
-  { path: localePath('/broneeri') },
+  { path: localePath('/broneeri'), query: { type: 'meeting' } },
   { path: localePath('/broneeri'), query: { type: 'plan' } },
   { path: localePath('/broneeri'), query: { type: 'organize' } },
 ])

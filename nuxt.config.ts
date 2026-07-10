@@ -30,6 +30,9 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
+      // Apply the saved language choice on every visit to the root,
+      // not just the first one
+      alwaysRedirect: true,
     },
   },
 })

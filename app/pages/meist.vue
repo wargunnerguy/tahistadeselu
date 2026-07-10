@@ -73,7 +73,7 @@
         {{ $t('meist.cta.title') }}
       </h2>
       <NuxtLink
-        :to="localePath('/broneeri')"
+        :to="{ path: localePath('/broneeri'), query: { type: 'meeting' } }"
         class="inline-block border border-stone-800 text-stone-800 text-xs tracking-[0.25em] uppercase px-8 py-3 hover:bg-stone-800 hover:text-white transition-all duration-300"
       >
         {{ $t('meist.cta.button') }}

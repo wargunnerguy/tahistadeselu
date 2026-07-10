@@ -264,6 +264,7 @@ export default {
     subtitle: 'Esmane kohtumine (kuni 45 minutit) on alati tasuta. Täitke päring ja võtame teiega ühendust hiljemalt 1 tööpäeva jooksul.',
     form: {
       type: 'Minu soov *',
+      typeMeeting: 'Soovin tasuta esmast kohtumist (kuni 45 minutit)',
       typePlan: 'Soovin planeerida oma elu tähistamise tseremooniat',
       typeOrganize: 'Soovin korraldada elu tähistamise tseremoonia lähedasele',
       name: 'Nimi *',
