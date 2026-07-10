@@ -14,7 +14,12 @@ const head = useLocaleHead({ dir: true, lang: true, seo: true })
 
 useHead(() => ({
   htmlAttrs: head.value.htmlAttrs,
-  link: head.value.link,
+  link: [
+    ...(head.value.link ?? []),
+    { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+    { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  ],
   meta: head.value.meta,
   noscript: [
     { innerHTML: '<style>[data-reveal]{opacity:1 !important;transform:none !important}</style>', tagPosition: 'head' },
