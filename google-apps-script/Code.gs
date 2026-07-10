@@ -22,6 +22,12 @@ function doPost(e) {
 
     var data = JSON.parse(e.postData.contents);
 
+    // Honeypot: real visitors never fill the hidden "website" field.
+    // Pretend success so bots don't retry, but save nothing.
+    if (data.website) {
+      return respond({ success: true });
+    }
+
     appendToSheet(data);
     sendEmailNotification(data);
 

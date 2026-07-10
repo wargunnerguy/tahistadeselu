@@ -69,6 +69,11 @@
 
           <form v-else class="space-y-10" @submit.prevent="submit">
 
+            <!-- Honeypot: invisible to humans, bots fill it -->
+            <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+              <label>Website<input v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
             <div>
               <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('kontakt.form.name') }}</label>
               <input
@@ -141,11 +146,17 @@ const form = reactive({
   nimi: '',
   epost: '',
   sonum: '',
+  website: '',
 })
 
 const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
 
 async function submit() {
+  // Honeypot filled → bot; pretend success without sending
+  if (form.website) {
+    status.value = 'success'
+    return
+  }
   const url = import.meta.env.VITE_APPS_SCRIPT_URL
   if (!url || url === 'your_url_here') {
     status.value = 'error'
