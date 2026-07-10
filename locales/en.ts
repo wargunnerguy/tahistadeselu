@@ -346,7 +346,7 @@ export default {
     pagesLabel: 'Pages',
     copyright: '© {year} Tähistades Elu. All rights reserved.',
     country: 'Estonia',
-    legal: '', // e.g. 'Tähistades Elu OÜ · Reg. code 12345678' — shown in the footer when filled
+    legal: 'LSCANDLES OÜ · Registry code 16894488',
   },
   privacy: {
     seo: {
@@ -357,6 +357,10 @@ export default {
     title: 'Privacy policy',
     intro: 'We handle your data with care and collect only what is needed to get in touch with you.',
     sections: [
+      {
+        title: 'Data controller',
+        body: "The controller of your personal data is LSCANDLES OÜ (registry code 16894488), operating under the brand “Tähistades Elu”. For any questions, write to tahistadeselu{'@'}gmail.com.",
+      },
       {
         title: 'What data we collect',
         body: 'When you fill in a form on our website, we collect the data you provide yourself: your name, email address, phone number, and the content of your message.',

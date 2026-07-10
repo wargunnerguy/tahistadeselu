@@ -346,7 +346,7 @@ export default {
     pagesLabel: 'Leheküljed',
     copyright: '© {year} Tähistades Elu. Kõik õigused kaitstud.',
     country: 'Eesti',
-    legal: '', // nt 'Tähistades Elu OÜ · Registrikood 12345678' — kuvatakse jaluses, kui täidetud
+    legal: 'LSCANDLES OÜ · Registrikood 16894488',
   },
   privacy: {
     seo: {
@@ -357,6 +357,10 @@ export default {
     title: 'Privaatsuspoliitika',
     intro: 'Hoiame sinu andmeid hoolikalt ja kogume ainult seda, mida on vaja sinuga ühenduse võtmiseks.',
     sections: [
+      {
+        title: 'Vastutav töötleja',
+        body: "Isikuandmete vastutav töötleja on LSCANDLES OÜ (registrikood 16894488), kes tegutseb kaubamärgi „Tähistades Elu\" all. Küsimuste korral kirjuta aadressile tahistadeselu{'@'}gmail.com.",
+      },
       {
         title: 'Milliseid andmeid kogume',
         body: 'Kui täidad meie veebilehel vormi, kogume andmed, mille ise esitad: nimi, e-posti aadress, telefoninumber ja sinu sõnumi sisu.',
