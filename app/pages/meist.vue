@@ -17,12 +17,28 @@
         <p class="text-2xl md:text-3xl font-extralight text-stone-700 leading-relaxed mb-10">
           {{ $t('meist.story.lead') }}
         </p>
-        <p class="text-stone-500 font-light leading-relaxed text-base mb-6">
-          {{ $t('meist.story.body1') }}
+        <p
+          v-for="(paragraph, i) in paragraphs"
+          :key="i"
+          class="text-stone-500 font-light leading-relaxed text-base mb-6 last:mb-0"
+        >
+          {{ paragraph }}
         </p>
-        <p class="text-stone-500 font-light leading-relaxed text-base">
-          {{ $t('meist.story.body2') }}
-        </p>
+
+        <!-- Signature -->
+        <div class="mt-14 flex items-center gap-5">
+          <img
+            v-if="founderPhoto"
+            :src="founderPhoto"
+            :alt="$t('meist.signature.role')"
+            class="w-16 h-16 rounded-full object-cover"
+            loading="lazy"
+          />
+          <div>
+            <p class="text-sm text-stone-700 font-light tracking-wide">— {{ $t('meist.signature.role') }}</p>
+            <p class="text-xs text-stone-400 font-light mt-1 tracking-wide">{{ $t('meist.signature.detail') }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -31,35 +47,22 @@
       <div class="border-t border-stone-100" />
     </div>
 
-    <!-- Who we are -->
+    <!-- Our symbol -->
     <section class="py-24 px-6 bg-white">
-      <div class="max-w-4xl mx-auto">
-        <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-16 text-center">{{ $t('meist.team.label') }}</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div>
-            <h3 class="text-sm tracking-[0.2em] uppercase text-stone-800 font-light mb-5">
-              {{ $t('meist.team.founderName') }}
-            </h3>
-            <p class="text-stone-500 font-light leading-relaxed text-sm">
-              {{ $t('meist.team.founderBio') }}
-            </p>
-          </div>
-          <div>
-            <h3 class="text-sm tracking-[0.2em] uppercase text-stone-800 font-light mb-5">
-              {{ $t('meist.team.valuesTitle') }}
-            </h3>
-            <ul class="space-y-4 text-stone-500 font-light text-sm">
-              <li
-                v-for="(val, i) in values"
-                :key="i"
-                class="flex items-start gap-3"
-              >
-                <span class="text-stone-300 mt-0.5">—</span>
-                <span>{{ val }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-8">{{ $t('meist.symbol.label') }}</p>
+        <img
+          :src="`${baseURL}logo.png`"
+          :alt="$t('meist.symbol.title')"
+          class="mx-auto mb-8 w-40 md:w-52"
+          loading="lazy"
+        />
+        <h2 class="text-2xl md:text-3xl font-extralight text-stone-700 tracking-wide mb-8">
+          {{ $t('meist.symbol.title') }}
+        </h2>
+        <p class="text-stone-500 font-light leading-relaxed text-base">
+          {{ $t('meist.symbol.text') }}
+        </p>
       </div>
     </section>
 
@@ -82,10 +85,22 @@
 <script setup lang="ts">
 const { t, tm } = useI18n()
 const localePath = useLocalePath()
+const { app: { baseURL } } = useRuntimeConfig()
+
+// Set to e.g. `${baseURL}images/asutaja.jpg` once the founder photo is added to public/images/
+const founderPhoto = ''
+
+useSeoMeta({
+  title: () => t('meist.seo.title'),
+  description: () => t('meist.seo.description'),
+  ogTitle: () => t('meist.seo.title'),
+  ogDescription: () => t('meist.seo.description'),
+  ogImage: 'https://tahistadeselu.ee/og-image.jpg',
+})
 
 const titleRaw = computed(() => t('meist.title'))
 const titleLine1 = computed(() => titleRaw.value.split('\n')[0] ?? '')
 const titleLine2 = computed(() => titleRaw.value.split('\n')[1] ?? '')
 
-const values = computed(() => tm('meist.team.values') as string[])
+const paragraphs = computed(() => tm('meist.story.paragraphs') as string[])
 </script>

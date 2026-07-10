@@ -113,6 +113,11 @@
             >
               {{ status === 'sending' ? $t('kontakt.form.sending') : $t('kontakt.form.submit') }}
             </button>
+
+            <p class="text-center text-xs text-stone-400 font-light">
+              {{ $t('privacy.formNote') }}
+              <NuxtLink :to="localePath('/privaatsus')" class="underline underline-offset-2 hover:text-stone-600 transition-colors">{{ $t('privacy.formNoteLink') }}</NuxtLink>.
+            </p>
           </form>
         </div>
       </div>
@@ -122,6 +127,15 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
+
+useSeoMeta({
+  title: () => t('kontakt.seo.title'),
+  description: () => t('kontakt.seo.description'),
+  ogTitle: () => t('kontakt.seo.title'),
+  ogDescription: () => t('kontakt.seo.description'),
+  ogImage: 'https://tahistadeselu.ee/og-image.jpg',
+})
 
 const form = reactive({
   nimi: '',

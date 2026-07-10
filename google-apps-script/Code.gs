@@ -52,7 +52,7 @@ function appendToSheet(data) {
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.appendRow([
-      'Aeg', 'Vormi tüüp', 'Nimi', 'E-post',
+      'Aeg', 'Vormi tüüp', 'Soov', 'Nimi', 'E-post',
       'Telefon', 'Tseremoonia kuupäev', 'Sõnum / Lisainfo'
     ]);
     // Freeze header row
@@ -67,8 +67,9 @@ function appendToSheet(data) {
 
   sheet.appendRow([
     timestamp,
-    data.type      || '',
-    data.nimi      || '',
+    data.type        || '',
+    data.tseremoonia || '',
+    data.nimi        || '',
     data.epost     || '',
     data.telefon   || '',
     data.kuupaev   || '',
@@ -95,6 +96,7 @@ function sendEmailNotification(data) {
   ];
 
   var fields = [
+    ['Soov',                   data.tseremoonia],
     ['Nimi',                   data.nimi],
     ['E-post',                 data.epost],
     ['Telefon',                data.telefon],

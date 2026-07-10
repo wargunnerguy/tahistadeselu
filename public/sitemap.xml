@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tahistadeselu.ee/</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/en</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/meist</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/meist" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/meist" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/meist" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/en/meist</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/meist" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/meist" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/meist" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/teenused</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/teenused" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/teenused" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/teenused" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/en/teenused</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/teenused" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/teenused" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/teenused" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/pood</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/pood" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/pood" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/pood" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/en/pood</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/pood" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/pood" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/pood" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/broneeri</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/broneeri" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/broneeri" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/broneeri" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/en/broneeri</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/broneeri" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/broneeri" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/broneeri" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/kontakt" />
+  </url>
+  <url>
+    <loc>https://tahistadeselu.ee/en/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/kontakt" />
+  </url>
+</urlset>

@@ -3,7 +3,7 @@
   <nav
     :class="[
       'fixed top-0 left-0 w-full z-50 transition-all duration-500',
-      scrolled ? 'bg-stone-900' : 'bg-transparent',
+      solid ? 'bg-stone-900' : 'bg-transparent',
     ]"
   >
     <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -107,9 +107,14 @@
 const { locale } = useI18n()
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
+const route = useRoute()
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
+
+// Transparent nav only over the homepage hero video; solid everywhere else
+const isHome = computed(() => String(route.name ?? '').startsWith('index___'))
+const solid = computed(() => scrolled.value || !isHome.value)
 
 const links = [
   { to: '/meist', key: 'nav.meist' },

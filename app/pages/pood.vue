@@ -58,9 +58,9 @@
       </div>
     </section>
 
-    <!-- Specs + Price + Packages -->
+    <!-- Specs + Price -->
     <section class="py-24 px-6 bg-white">
-      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
         <!-- Specs -->
         <div>
@@ -80,9 +80,7 @@
         <!-- Price -->
         <div class="flex flex-col justify-between">
           <div>
-            <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-4">{{ $t('pood.specLabel') }}</p>
-            <p class="text-4xl font-extralight text-stone-800 tracking-wide mb-3">{{ $t('pood.price') }}</p>
-            <p class="text-xs text-stone-400 font-light">{{ $t('pood.priceNote') }}</p>
+            <p class="text-4xl font-extralight text-stone-800 tracking-wide">{{ $t('pood.price') }}</p>
           </div>
           <div class="mt-10">
             <a
@@ -95,25 +93,6 @@
           </div>
         </div>
 
-        <!-- Included in packages -->
-        <div>
-          <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-8">{{ $t('pood.packagesLabel') }}</p>
-          <div class="space-y-4">
-            <div
-              v-for="pkg in inPackages"
-              :key="pkg"
-              class="border border-stone-200 px-5 py-4"
-            >
-              <p class="text-sm tracking-[0.1em] uppercase text-stone-700 font-light">{{ pkg }}</p>
-            </div>
-          </div>
-          <NuxtLink
-            :to="localePath('/teenused')"
-            class="mt-8 inline-block text-xs tracking-[0.2em] uppercase text-stone-400 hover:text-stone-800 transition-colors underline underline-offset-4"
-          >
-            {{ $t('nav.teenused') }} →
-          </NuxtLink>
-        </div>
       </div>
     </section>
 
@@ -181,6 +160,11 @@
           >
             {{ status === 'sending' ? $t('pood.form.sending') : $t('pood.form.submit') }}
           </button>
+
+          <p class="text-center text-xs text-stone-400 font-light">
+            {{ $t('privacy.formNote') }}
+            <NuxtLink :to="localePath('/privaatsus')" class="underline underline-offset-2 hover:text-stone-600 transition-colors">{{ $t('privacy.formNoteLink') }}</NuxtLink>.
+          </p>
         </form>
       </div>
     </section>
@@ -191,13 +175,20 @@
 const { t, tm } = useI18n()
 const localePath = useLocalePath()
 
+useSeoMeta({
+  title: () => t('pood.seo.title'),
+  description: () => t('pood.seo.description'),
+  ogTitle: () => t('pood.seo.title'),
+  ogDescription: () => t('pood.seo.description'),
+  ogImage: 'https://tahistadeselu.ee/og-image.jpg',
+})
+
 const titleRaw = computed(() => t('pood.title'))
 const titleLine1 = computed(() => titleRaw.value.split('\n')[0] ?? '')
 const titleLine2 = computed(() => titleRaw.value.split('\n')[1] ?? '')
 
 const chapters = computed(() => tm('pood.chapters') as Array<{ title: string; desc: string }>)
 const specs = computed(() => tm('pood.specs') as string[])
-const inPackages = computed(() => tm('pood.inPackages') as string[])
 
 const form = reactive({ nimi: '', epost: '', kogus: '1' })
 const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')

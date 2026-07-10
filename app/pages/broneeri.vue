@@ -31,6 +31,29 @@
         <form v-else class="space-y-10" @submit.prevent="submit">
 
           <div>
+            <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.type') }}</p>
+            <div class="space-y-3">
+              <label
+                v-for="option in typeOptions"
+                :key="option.value"
+                class="flex items-start gap-3 cursor-pointer group"
+              >
+                <input
+                  v-model="form.tseremoonia"
+                  type="radio"
+                  name="tseremoonia"
+                  :value="option.value"
+                  required
+                  class="mt-1 accent-stone-800"
+                />
+                <span class="text-sm font-light text-stone-600 group-hover:text-stone-800 transition-colors leading-relaxed">
+                  {{ option.label }}
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div>
             <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.name') }}</label>
             <input
               v-model="form.nimi"
@@ -92,6 +115,11 @@
           >
             {{ status === 'sending' ? $t('broneeri.form.sending') : $t('broneeri.form.submit') }}
           </button>
+
+          <p class="text-center text-xs text-stone-400 font-light">
+            {{ $t('privacy.formNote') }}
+            <NuxtLink :to="localePath('/privaatsus')" class="underline underline-offset-2 hover:text-stone-600 transition-colors">{{ $t('privacy.formNoteLink') }}</NuxtLink>.
+          </p>
         </form>
       </div>
     </section>
@@ -100,13 +128,35 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
+const route = useRoute()
+const localePath = useLocalePath()
+
+useSeoMeta({
+  title: () => t('broneeri.seo.title'),
+  description: () => t('broneeri.seo.description'),
+  ogTitle: () => t('broneeri.seo.title'),
+  ogDescription: () => t('broneeri.seo.description'),
+  ogImage: 'https://tahistadeselu.ee/og-image.jpg',
+})
+
+const typeOptions = computed(() => [
+  { value: 'plan', label: t('broneeri.form.typePlan') },
+  { value: 'organize', label: t('broneeri.form.typeOrganize') },
+])
 
 const form = reactive({
+  tseremoonia: '',
   nimi: '',
   epost: '',
   telefon: '',
   kuupaev: '',
   lisainfo: '',
+})
+
+// Pre-select on the client only, so prerendered HTML matches initial hydration
+onMounted(() => {
+  const type = route.query.type
+  if (type === 'plan' || type === 'organize') form.tseremoonia = type
 })
 
 const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -122,7 +172,11 @@ async function submit() {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ type: 'broneering', ...form }),
+      body: JSON.stringify({
+        type: 'broneering',
+        ...form,
+        tseremoonia: typeOptions.value.find(o => o.value === form.tseremoonia)?.label ?? form.tseremoonia,
+      }),
     })
     const json = await res.json()
     if (!json.success) throw new Error(json.error || 'server error')

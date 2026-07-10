@@ -2,8 +2,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  ssr: false,
-
   app: {
     baseURL: '/',
   },
@@ -18,8 +16,12 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
 
   i18n: {
+    baseUrl: 'https://tahistadeselu.ee',
     strategy: 'prefix_except_default',
     defaultLocale: 'et',
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
     locales: [
       { code: 'et', language: 'et-EE', name: 'Eesti' },
       { code: 'en', language: 'en-US', name: 'English' },

@@ -56,9 +56,17 @@
         <p class="text-stone-500 text-xs tracking-wide">
           {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
         </p>
-        <p class="text-stone-600 text-xs tracking-wide">
-          {{ $t('footer.country') }}
-        </p>
+        <div class="flex items-center gap-6">
+          <NuxtLink
+            :to="localePath('/privaatsus')"
+            class="text-stone-600 text-xs tracking-wide hover:text-stone-400 transition-colors"
+          >
+            {{ $t('privacy.footerLink') }}
+          </NuxtLink>
+          <p class="text-stone-600 text-xs tracking-wide">
+            {{ $t('footer.country') }}
+          </p>
+        </div>
       </div>
     </div>
   </footer>

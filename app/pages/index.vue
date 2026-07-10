@@ -9,6 +9,7 @@
         class="absolute inset-0 w-full h-full object-cover"
         :class="hdReady ? 'opacity-0' : 'opacity-100'"
         style="filter: blur(8px); transform: scale(1.05);"
+        :poster="v('hero-poster.jpg')"
         autoplay
         loop
         muted
@@ -18,11 +19,13 @@
         <source :src="v('placeholder-final.mp4')" type="video/mp4" />
       </video>
 
-      <!-- HD video: preloads hidden, swaps in when ready -->
+      <!-- HD video: preloads hidden, swaps in when ready; skipped on data-saver / slow connections -->
       <video
+        v-if="loadHd"
         ref="hdRef"
         class="absolute inset-0 w-full h-full object-cover"
         :class="hdReady ? 'opacity-100' : 'opacity-0'"
+        :poster="v('hero-poster.jpg')"
         autoplay
         loop
         muted
@@ -48,12 +51,20 @@
         <p class="mt-8 text-base md:text-lg text-white/75 max-w-md font-light leading-relaxed tracking-wide">
           {{ $t('home.subtitle') }}
         </p>
-        <NuxtLink
-          :to="localePath('/broneeri')"
-          class="mt-10 inline-block border border-white/60 text-white text-xs tracking-[0.25em] uppercase px-8 py-3 hover:bg-white hover:text-stone-800 transition-all duration-300"
-        >
-          {{ $t('home.cta') }}
-        </NuxtLink>
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
+          <NuxtLink
+            :to="{ path: localePath('/broneeri'), query: { type: 'plan' } }"
+            class="flex items-center justify-center text-center min-h-[72px] bg-white text-stone-900 text-xs tracking-[0.18em] uppercase leading-relaxed px-8 py-4 hover:bg-stone-100 hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-black/20"
+          >
+            {{ $t('home.ctaPlan') }}
+          </NuxtLink>
+          <NuxtLink
+            :to="{ path: localePath('/broneeri'), query: { type: 'organize' } }"
+            class="flex items-center justify-center text-center min-h-[72px] border border-white/70 bg-white/10 backdrop-blur-sm text-white text-xs tracking-[0.18em] uppercase leading-relaxed px-8 py-4 hover:bg-white hover:text-stone-900 hover:-translate-y-0.5 transition-all duration-300"
+          >
+            {{ $t('home.ctaOrganize') }}
+          </NuxtLink>
+        </div>
       </div>
 
       <!-- Scroll indicator -->
@@ -74,8 +85,11 @@
         <h2 data-reveal data-delay="150" class="text-3xl md:text-5xl font-extralight text-white tracking-[0.04em] leading-snug mb-10">
           {{ $t('home.shift.question') }}
         </h2>
-        <p data-reveal data-delay="280" class="text-stone-400 font-light text-base md:text-lg leading-relaxed">
+        <p data-reveal data-delay="280" class="text-stone-400 font-light text-base md:text-lg leading-relaxed mb-6">
           {{ $t('home.shift.body') }}
+        </p>
+        <p data-reveal data-delay="380" class="text-stone-400 font-light text-base md:text-lg leading-relaxed">
+          {{ $t('home.shift.body2') }}
         </p>
       </div>
     </section>
@@ -142,15 +156,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <div
-            v-for="(pkg, i) in packageTeasers"
-            :key="pkg.slug"
+            v-for="(item, i) in pricingTeasers"
+            :key="i"
             data-reveal
             :data-delay="i * 130"
-            class="border border-stone-200 p-10 group hover:border-stone-500 transition-colors duration-300 cursor-default"
+            class="flex flex-col border border-stone-200 p-10 group hover:border-stone-500 transition-colors duration-300 cursor-default"
           >
-            <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-4">{{ pkg.tagline }}</p>
-            <h3 class="text-xl tracking-[0.1em] uppercase font-light text-stone-800 mb-8">{{ pkg.name }}</h3>
-            <p class="text-3xl font-extralight text-stone-700 tracking-wide">{{ pkg.price }}</p>
+            <h3 class="text-lg tracking-[0.08em] uppercase font-light text-stone-800 mb-8 flex-1">{{ item.title }}</h3>
+            <p class="text-3xl font-extralight text-stone-700 tracking-wide">{{ item.price }}</p>
+            <p v-if="item.priceNote" class="text-xs tracking-[0.15em] uppercase text-stone-400 mt-2">{{ item.priceNote }}</p>
           </div>
         </div>
 
@@ -190,7 +204,14 @@
 
     <!-- ░░ 7. QUOTE ░░ -->
     <section class="py-24 px-6 bg-stone-50 text-center">
-      <blockquote data-reveal class="max-w-2xl mx-auto text-2xl md:text-3xl font-extralight text-stone-600 leading-relaxed tracking-wide italic">
+      <img
+        data-reveal
+        :src="`${baseURL}logo.png`"
+        alt=""
+        class="mx-auto mb-10 w-28 md:w-36 opacity-80"
+        loading="lazy"
+      />
+      <blockquote data-reveal data-delay="150" class="max-w-2xl mx-auto text-2xl md:text-3xl font-extralight text-stone-600 leading-relaxed tracking-wide italic">
         {{ $t('home.quote') }}
       </blockquote>
     </section>
@@ -229,12 +250,27 @@ const localePath = useLocalePath()
 const { app: { baseURL } } = useRuntimeConfig()
 const v = (file: string) => `${baseURL}video/${file}`
 
+useSeoMeta({
+  title: () => t('home.seo.title'),
+  description: () => t('home.seo.description'),
+  ogTitle: () => t('home.seo.title'),
+  ogDescription: () => t('home.seo.description'),
+  ogImage: 'https://tahistadeselu.ee/og-image.jpg',
+})
+
 useScrollReveal()
 
 // Hero video swap
 const placeholderRef = ref<HTMLVideoElement | null>(null)
 const hdRef = ref<HTMLVideoElement | null>(null)
 const hdReady = ref(false)
+const loadHd = ref(false)
+
+onMounted(() => {
+  const conn = (navigator as { connection?: { saveData?: boolean; effectiveType?: string } }).connection
+  const slow = conn?.saveData || /(^|-)2g$/.test(conn?.effectiveType ?? '')
+  loadHd.value = !slow
+})
 
 function onHdReady() {
   hdRef.value?.play()
@@ -268,25 +304,9 @@ const valueProps = [
 // How it works steps (section 4)
 const steps = computed(() => tm('home.steps') as Array<{ num: string; title: string; body: string }>)
 
-// Package teasers (section 5) — pulls from existing teenused keys
-const packageTeasers = computed(() => [
-  {
-    slug: 'saatmine',
-    name: t('teenused.packages.saatmine.name'),
-    tagline: t('teenused.packages.saatmine.tagline'),
-    price: t('teenused.packages.saatmine.price'),
-  },
-  {
-    slug: 'malestus',
-    name: t('teenused.packages.malestus.name'),
-    tagline: t('teenused.packages.malestus.tagline'),
-    price: t('teenused.packages.malestus.price'),
-  },
-  {
-    slug: 'parand',
-    name: t('teenused.packages.parand.name'),
-    tagline: t('teenused.packages.parand.tagline'),
-    price: t('teenused.packages.parand.price'),
-  },
-])
+// Pricing teasers (section 5) — pulls from the teenused pricing keys
+const pricingTeasers = computed(() =>
+  (tm('teenused.pricing.items') as Array<{ title: string; price: string; priceNote?: string }>)
+    .map(item => ({ title: item.title, price: item.price, priceNote: item.priceNote })),
+)
 </script>
