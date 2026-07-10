@@ -4,7 +4,7 @@
 // ============================================================
 
 // ── CONFIG ── replace before deploying ──────────────────────
-var NOTIFICATION_EMAIL = 'your-email@example.com'; // ← your email
+var NOTIFICATION_EMAIL = 'tahistadeselu@gmail.com';
 var SHEET_NAME         = 'Päringud';               // ← sheet tab name
 // ────────────────────────────────────────────────────────────
 

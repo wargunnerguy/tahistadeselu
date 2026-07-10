@@ -28,6 +28,8 @@ jobs:
       - run: npm install
 
       - run: npm run generate
+        env:
+          VITE_APPS_SCRIPT_URL: ${{ vars.APPS_SCRIPT_URL }}
 
       - run: cp dist/index.html dist/404.html
 
