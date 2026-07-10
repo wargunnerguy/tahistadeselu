@@ -73,6 +73,16 @@ function nextRequestId() {
 
 // ── Sheet ────────────────────────────────────────────────────
 
+/**
+ * Values starting with + = or @ are parsed by Sheets as formulas
+ * (e.g. phone numbers like +372...). A leading apostrophe forces
+ * plain text and stays invisible in the cell.
+ */
+function asText(value) {
+  var s = String(value || '');
+  return /^[+=@]/.test(s) ? "'" + s : s;
+}
+
 function appendToSheet(data, requestId) {
   var ss    = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(SHEET_NAME);
@@ -98,12 +108,12 @@ function appendToSheet(data, requestId) {
     requestId,
     timestamp,
     typeLabel(data.type),
-    data.tseremoonia || '',
-    data.nimi        || '',
-    data.epost     || '',
-    data.telefon   || '',
-    data.kuupaev   || '',
-    data.sonum     || data.lisainfo || (data.kogus ? 'Kogus: ' + data.kogus : '')
+    asText(data.tseremoonia),
+    asText(data.nimi),
+    asText(data.epost),
+    asText(data.telefon),
+    asText(data.kuupaev),
+    asText(data.sonum || data.lisainfo || (data.kogus ? 'Kogus: ' + data.kogus : ''))
   ]);
 }
 
