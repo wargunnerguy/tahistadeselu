@@ -6,7 +6,6 @@
       <NuxtPage />
     </main>
     <Footer />
-    <MessengerButton />
   </div>
 </template>
 
