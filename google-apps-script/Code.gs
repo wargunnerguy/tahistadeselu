@@ -6,6 +6,7 @@
 // ── CONFIG ── replace before deploying ──────────────────────
 var NOTIFICATION_EMAIL = 'tahistadeselu@gmail.com';
 var SHEET_NAME         = 'Päringud';               // ← sheet tab name
+var ID_SEED            = 1263;                     // ← first ID will be TE-1264
 // ────────────────────────────────────────────────────────────
 
 
@@ -28,8 +29,10 @@ function doPost(e) {
       return respond({ success: true });
     }
 
-    appendToSheet(data);
-    sendEmailNotification(data);
+    var requestId = nextRequestId();
+
+    appendToSheet(data, requestId);
+    sendEmailNotification(data, requestId);
 
     return respond({ success: true });
 
@@ -48,9 +51,29 @@ function doGet(e) {
 }
 
 
+// ── Request ID ───────────────────────────────────────────────
+
+/**
+ * Sequential enquiry number (TE-1264, TE-1265, ...), persisted in
+ * Script Properties. Lock prevents duplicates on simultaneous posts.
+ */
+function nextRequestId() {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(5000);
+  try {
+    var props = PropertiesService.getScriptProperties();
+    var next  = parseInt(props.getProperty('REQUEST_COUNTER') || String(ID_SEED), 10) + 1;
+    props.setProperty('REQUEST_COUNTER', String(next));
+    return 'TE-' + next;
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+
 // ── Sheet ────────────────────────────────────────────────────
 
-function appendToSheet(data) {
+function appendToSheet(data, requestId) {
   var ss    = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(SHEET_NAME);
 
@@ -58,8 +81,8 @@ function appendToSheet(data) {
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.appendRow([
-      'Aeg', 'Vormi tüüp', 'Soov', 'Nimi', 'E-post',
-      'Telefon', 'Tseremoonia kuupäev', 'Sõnum / Lisainfo'
+      'Päringu nr', 'Aeg', 'Vormi tüüp', 'Soov', 'Nimi', 'E-post',
+      'Telefon', 'Tseremoonia ajavahemik', 'Sõnum / Lisainfo'
     ]);
     // Freeze header row
     sheet.setFrozenRows(1);
@@ -72,6 +95,7 @@ function appendToSheet(data) {
   );
 
   sheet.appendRow([
+    requestId,
     timestamp,
     typeLabel(data.type),
     data.tseremoonia || '',
@@ -110,20 +134,21 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;');
 }
 
-function sendEmailNotification(data) {
+function sendEmailNotification(data, requestId) {
   var label   = typeLabel(data.type);
   var name    = data.nimi || 'Nimetu';
-  var subject = (TYPE_SUBJECTS[data.type] || 'Uus päring') + ' — ' + name;
+  var subject = (TYPE_SUBJECTS[data.type] || 'Uus päring') + ' — ' + name + ' [' + requestId + ']';
 
   var timestamp = Utilities.formatDate(new Date(), 'Europe/Tallinn', 'dd.MM.yyyy HH:mm');
 
   // Only fields that have a value
   var fields = [
+    ['Päringu nr',          requestId],
     ['Soov',                data.tseremoonia],
     ['Nimi',                data.nimi],
     ['E-post',              data.epost],
     ['Telefon',             data.telefon],
-    ['Tseremoonia kuupäev', data.kuupaev],
+    ['Tseremoonia ajavahemik', data.kuupaev],
     ['Kogus',               data.kogus],
     ['Sõnum / lisainfo',    data.sonum || data.lisainfo]
   ].filter(function (pair) { return pair[1]; });
@@ -132,6 +157,20 @@ function sendEmailNotification(data) {
   var plain = [label + ' veebilehelt tahistadeselu.ee', ''].concat(
     fields.map(function (pair) { return pair[0] + ': ' + pair[1]; })
   ).join('\n');
+
+  // Pre-filled reply: subject with the enquiry number, greeting on top,
+  // and the customer's original enquiry quoted below the reply.
+  var replySubject = 'Tähistades Elu — vastus Teie päringule (' + requestId + ')';
+  var replyBody =
+    'Tere, ' + name + '!\n\n' +
+    'Täname, et võtsite meiega ühendust.\n\n\n\n' +
+    '------------------------------------------\n' +
+    'Teie päring ' + requestId + ' (' + timestamp + '):\n\n' +
+    fields
+      .filter(function (pair) { return pair[0] !== 'Päringu nr'; })
+      .map(function (pair) { return pair[0] + ': ' + pair[1]; })
+      .join('\n') +
+    '\n';
 
   var rowsHtml = fields.map(function (pair) {
     return '<tr>' +
@@ -144,7 +183,9 @@ function sendEmailNotification(data) {
   }).join('');
 
   var replyButton = data.epost
-    ? '<a href="mailto:' + escapeHtml(data.epost) + '" ' +
+    ? '<a href="mailto:' + encodeURIComponent(data.epost) +
+      '?subject=' + encodeURIComponent(replySubject) +
+      '&body=' + encodeURIComponent(replyBody) + '" ' +
       'style="display:inline-block;margin-top:28px;background:#1c1917;color:#ffffff;text-decoration:none;' +
       'font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;">Vasta kliendile</a>'
     : '';

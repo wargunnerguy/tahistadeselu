@@ -91,12 +91,27 @@
           </div>
 
           <div>
-            <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.date') }}</label>
-            <input
-              v-model="form.kuupaev"
-              type="date"
-              class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
-            />
+            <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">{{ $t('broneeri.form.date') }}</p>
+            <p class="text-xs text-stone-400 font-light mb-4">{{ $t('broneeri.form.dateHint') }}</p>
+            <div class="grid grid-cols-2 gap-8">
+              <div>
+                <label class="block text-xs tracking-[0.15em] uppercase text-stone-300 mb-2">{{ $t('broneeri.form.dateFrom') }}</label>
+                <input
+                  v-model="form.kuupaevAlates"
+                  type="date"
+                  class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
+                />
+              </div>
+              <div>
+                <label class="block text-xs tracking-[0.15em] uppercase text-stone-300 mb-2">{{ $t('broneeri.form.dateTo') }}</label>
+                <input
+                  v-model="form.kuupaevKuni"
+                  type="date"
+                  :min="form.kuupaevAlates || undefined"
+                  class="w-full border-b border-stone-200 bg-transparent py-3 text-stone-800 placeholder-stone-300 focus:outline-none focus:border-stone-600 transition-colors text-sm"
+                />
+              </div>
+            </div>
           </div>
 
           <div>
@@ -154,7 +169,8 @@ const form = reactive({
   nimi: '',
   epost: '',
   telefon: '',
-  kuupaev: '',
+  kuupaevAlates: '',
+  kuupaevKuni: '',
   lisainfo: '',
   website: '',
 })
@@ -180,13 +196,22 @@ async function submit() {
   }
   status.value = 'sending'
   try {
+    // ISO (2026-08-12) → Estonian format (12.08.2026); range joined for the sheet/email
+    const fmt = (iso: string) => iso ? iso.split('-').reverse().join('.') : ''
+    const kuupaev = [fmt(form.kuupaevAlates), fmt(form.kuupaevKuni)].filter(Boolean).join(' – ')
+
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({
         type: 'broneering',
-        ...form,
         tseremoonia: typeOptions.value.find(o => o.value === form.tseremoonia)?.label ?? form.tseremoonia,
+        nimi: form.nimi,
+        epost: form.epost,
+        telefon: form.telefon,
+        kuupaev,
+        lisainfo: form.lisainfo,
+        website: form.website,
       }),
     })
     const json = await res.json()
