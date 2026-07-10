@@ -127,7 +127,8 @@ const solid = computed(() => scrolled.value || !isHome.value)
 const links = [
   { to: '/meist', key: 'nav.meist' },
   { to: '/teenused', key: 'nav.teenused' },
-  { to: '/pood', key: 'nav.pood' },
+  // Store hidden until the workbook launches — restore this link then
+  // { to: '/pood', key: 'nav.pood' },
   { to: '/broneeri', key: 'nav.broneeri' },
   { to: '/kontakt', key: 'nav.kontakt' },
 ]

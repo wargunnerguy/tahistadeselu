@@ -38,18 +38,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/teenused" />
   </url>
   <url>
-    <loc>https://tahistadeselu.ee/pood</loc>
-    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/pood" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/pood" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/pood" />
-  </url>
-  <url>
-    <loc>https://tahistadeselu.ee/en/pood</loc>
-    <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/pood" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/pood" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tahistadeselu.ee/pood" />
-  </url>
-  <url>
     <loc>https://tahistadeselu.ee/broneeri</loc>
     <xhtml:link rel="alternate" hreflang="et" href="https://tahistadeselu.ee/broneeri" />
     <xhtml:link rel="alternate" hreflang="en" href="https://tahistadeselu.ee/en/broneeri" />

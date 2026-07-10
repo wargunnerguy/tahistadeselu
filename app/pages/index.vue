@@ -179,8 +179,8 @@
       </div>
     </section>
 
-    <!-- ░░ 6. WORKBOOK TEASER ░░ -->
-    <section class="py-32 px-6 bg-stone-900">
+    <!-- ░░ 6. WORKBOOK TEASER ░░ (hidden until the workbook launches — drop the v-if to restore) -->
+    <section v-if="false" class="py-32 px-6 bg-stone-900">
       <div class="max-w-2xl mx-auto text-center">
         <p data-reveal class="text-xs tracking-[0.35em] uppercase text-stone-500 mb-8">
           {{ $t('home.workbookTeaser.label') }}

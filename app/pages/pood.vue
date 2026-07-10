@@ -177,6 +177,11 @@
 </template>
 
 <script setup lang="ts">
+// Store hidden until the workbook launches — send direct visitors home for now
+definePageMeta({
+  middleware: [(to) => navigateTo(to.path.startsWith('/en') ? '/en' : '/', { redirectCode: 302 })],
+})
+
 const { t, tm } = useI18n()
 const localePath = useLocalePath()
 
