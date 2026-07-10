@@ -10,10 +10,17 @@
       <!-- Logo -->
       <NuxtLink
         :to="localePath('/')"
-        class="text-sm font-light tracking-[0.25em] uppercase text-white transition-opacity duration-300 hover:opacity-60"
+        class="flex items-center gap-3 text-sm font-light tracking-[0.25em] uppercase text-white transition-opacity duration-300 hover:opacity-60"
         @click="menuOpen = false"
       >
-        {{ $t('nav.home') }}
+        <!-- Brown line art rendered white for the dark bar -->
+        <img
+          :src="`${baseURL}logo.png`"
+          alt=""
+          class="h-9 w-auto"
+          style="filter: brightness(0) invert(1);"
+        />
+        <span>{{ $t('nav.home') }}</span>
       </NuxtLink>
 
       <!-- Desktop links + language switcher -->
@@ -108,6 +115,7 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const route = useRoute()
+const { app: { baseURL } } = useRuntimeConfig()
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
