@@ -192,8 +192,12 @@ function sendEmailNotification(data, requestId) {
     '</tr>';
   }).join('');
 
-  var replyButton = data.epost
-    ? '<a href="mailto:' + encodeURIComponent(data.epost) +
+  // The address part of a mailto: link must keep @ literal — only strip
+  // characters that could break out of the URL or the href attribute.
+  var replyAddress = String(data.epost || '').trim().replace(/[\s<>"',;?&#]/g, '');
+
+  var replyButton = replyAddress
+    ? '<a href="mailto:' + replyAddress +
       '?subject=' + encodeURIComponent(replySubject) +
       '&body=' + encodeURIComponent(replyBody) + '" ' +
       'style="display:inline-block;margin-top:28px;background:#1c1917;color:#ffffff;text-decoration:none;' +
