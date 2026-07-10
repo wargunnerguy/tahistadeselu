@@ -68,7 +68,7 @@ export default {
   meist: {
     seo: {
       title: 'Our Story — Tähistades Elu',
-      description: 'How "Tähistades elu" came to be. A service created by a palliative care nurse, helping to create farewells that speak of life and leave peace in the heart.',
+      description: 'How "Tähistades elu" came to be. A service created by palliative care nurse Kädy-Liis Vään, helping to create farewells that speak of life and leave peace in the heart.',
     },
     eyebrow: 'Our story',
     title: 'How "Tähistades elu"\ncame to be',
@@ -87,8 +87,31 @@ export default {
       ],
     },
     signature: {
-      role: 'Founder of "Tähistades elu"',
-      detail: 'Nurse in a palliative care ward',
+      role: 'Kädy-Liis Vään',
+      detail: 'Founder of "Tähistades elu" · nurse in a palliative care ward',
+    },
+    team: {
+      label: 'Our people',
+      members: [
+        {
+          name: 'Kädy-Liis Vään',
+          role: 'Founder & ceremony organiser',
+          detail: 'Nurse in a palliative care ward',
+          img: 'KLV.jpg',
+        },
+        {
+          name: 'Merili Põder',
+          role: 'Ceremony organiser',
+          detail: 'Nurse in a palliative care ward',
+          img: 'merili.jpg',
+        },
+        {
+          name: 'Reimo Vellemaa',
+          role: 'Video recording, editing & IT',
+          detail: '',
+          img: 'reimo.jpg',
+        },
+      ],
     },
     symbol: {
       label: 'Our symbol',
@@ -323,6 +346,7 @@ export default {
     pagesLabel: 'Pages',
     copyright: '© {year} Tähistades Elu. All rights reserved.',
     country: 'Estonia',
+    legal: '', // e.g. 'Tähistades Elu OÜ · Reg. code 12345678' — shown in the footer when filled
   },
   privacy: {
     seo: {

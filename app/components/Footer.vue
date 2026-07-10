@@ -53,9 +53,14 @@
 
       <!-- Bottom bar -->
       <div class="mt-16 pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-stone-500 text-xs tracking-wide">
-          {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
-        </p>
+        <div class="text-center sm:text-left">
+          <p class="text-stone-500 text-xs tracking-wide">
+            {{ $t('footer.copyright', { year: new Date().getFullYear() }) }}
+          </p>
+          <p v-if="$t('footer.legal')" class="text-stone-600 text-xs tracking-wide mt-1">
+            {{ $t('footer.legal') }}
+          </p>
+        </div>
         <div class="flex items-center gap-6">
           <NuxtLink
             :to="localePath('/privaatsus')"
@@ -78,7 +83,8 @@ const localePath = useLocalePath()
 const links = [
   { to: '/meist', key: 'nav.meist' },
   { to: '/teenused', key: 'nav.teenused' },
-  { to: '/pood', key: 'nav.pood' },
+  // Store hidden until the workbook launches — restore this link then
+  // { to: '/pood', key: 'nav.pood' },
   { to: '/broneeri', key: 'nav.broneeri' },
   { to: '/kontakt', key: 'nav.kontakt' },
 ]

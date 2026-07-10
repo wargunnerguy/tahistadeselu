@@ -68,7 +68,7 @@ export default {
   meist: {
     seo: {
       title: 'Meie lugu — Tähistades Elu',
-      description: 'Kuidas sündis „Tähistades elu"? Palliatiivravi õe loodud teenus, mis aitab luua hüvastijätu, mis räägib inimese elust ja jätab südamesse rahu.',
+      description: 'Kuidas sündis „Tähistades elu"? Palliatiivravi õe Kädy-Liis Vääna loodud teenus, mis aitab luua hüvastijätu, mis räägib inimese elust ja jätab südamesse rahu.',
     },
     eyebrow: 'Meie lugu',
     title: 'Kuidas sündis\n„Tähistades elu"?',
@@ -87,8 +87,31 @@ export default {
       ],
     },
     signature: {
-      role: '„Tähistades elu" asutaja',
-      detail: 'Õde palliatiivravi osakonnas',
+      role: 'Kädy-Liis Vään',
+      detail: '„Tähistades elu" asutaja · õde palliatiivravi osakonnas',
+    },
+    team: {
+      label: 'Meie inimesed',
+      members: [
+        {
+          name: 'Kädy-Liis Vään',
+          role: 'Asutaja ja tseremooniate korraldaja',
+          detail: 'Õde palliatiivravi osakonnas',
+          img: 'KLV.jpg',
+        },
+        {
+          name: 'Merili Põder',
+          role: 'Tseremooniate korraldaja',
+          detail: 'Õde palliatiivravi osakonnas',
+          img: 'merili.jpg',
+        },
+        {
+          name: 'Reimo Vellemaa',
+          role: 'Videosalvestus, montaaž ja IT',
+          detail: '',
+          img: 'reimo.jpg',
+        },
+      ],
     },
     symbol: {
       label: 'Meie sümbol',
@@ -323,6 +346,7 @@ export default {
     pagesLabel: 'Leheküljed',
     copyright: '© {year} Tähistades Elu. Kõik õigused kaitstud.',
     country: 'Eesti',
+    legal: '', // nt 'Tähistades Elu OÜ · Registrikood 12345678' — kuvatakse jaluses, kui täidetud
   },
   privacy: {
     seo: {

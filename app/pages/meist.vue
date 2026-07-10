@@ -66,6 +66,46 @@
       </div>
     </section>
 
+    <!-- Team -->
+    <section class="py-24 px-6 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-16 text-center">{{ $t('meist.team.label') }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-14 sm:gap-8">
+          <div
+            v-for="(member, i) in team"
+            :key="i"
+            class="flex flex-col items-center text-center"
+          >
+            <img
+              v-if="!imgFailed[i]"
+              :src="`${baseURL}images/team/${member.img}`"
+              :alt="member.name || member.role"
+              class="w-36 h-36 rounded-full object-cover mb-6"
+              loading="lazy"
+              @error="imgFailed[i] = true"
+            />
+            <div
+              v-else
+              class="w-36 h-36 rounded-full bg-stone-100 flex items-center justify-center mb-6"
+            >
+              <span class="text-4xl font-extralight text-stone-300">
+                {{ (member.name || member.role).charAt(0) }}
+              </span>
+            </div>
+            <h3 class="text-sm tracking-[0.15em] uppercase text-stone-800 font-light">
+              {{ member.name || member.role }}
+            </h3>
+            <p v-if="member.name" class="text-xs text-stone-400 font-light mt-2 tracking-wide">
+              {{ member.role }}
+            </p>
+            <p v-if="member.detail" class="text-xs text-stone-400 font-light mt-1 tracking-wide">
+              {{ member.detail }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="py-20 px-6 bg-stone-50 text-center">
       <p class="text-xs tracking-[0.35em] uppercase text-stone-400 mb-6">{{ $t('meist.cta.eyebrow') }}</p>
@@ -103,4 +143,15 @@ const titleLine1 = computed(() => titleRaw.value.split('\n')[0] ?? '')
 const titleLine2 = computed(() => titleRaw.value.split('\n')[1] ?? '')
 
 const paragraphs = computed(() => tm('meist.story.paragraphs') as string[])
+
+interface TeamMember {
+  name: string
+  role: string
+  detail?: string
+  img: string
+}
+
+const team = computed(() => tm('meist.team.members') as TeamMember[])
+// Falls back to an initial in a circle while a photo file is missing
+const imgFailed = reactive<Record<number, boolean>>({})
 </script>
