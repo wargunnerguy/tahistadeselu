@@ -96,13 +96,13 @@ export default {
         {
           name: 'Kädy-Liis Vään',
           role: 'Asutaja ja tseremooniate korraldaja',
-          detail: 'Õde palliatiivravi osakonnas',
+          detail: 'Palliatiivravi õde',
           img: 'KLV.jpg',
         },
         {
           name: 'Merili Põder',
           role: 'Tseremooniate korraldaja',
-          detail: 'Õde palliatiivravi osakonnas',
+          detail: 'Palliatiivravi õde',
           img: 'merili.jpg',
         },
         {

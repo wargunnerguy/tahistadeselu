@@ -96,13 +96,13 @@ export default {
         {
           name: 'Kädy-Liis Vään',
           role: 'Founder & ceremony organiser',
-          detail: 'Nurse in a palliative care ward',
+          detail: 'Palliative care nurse',
           img: 'KLV.jpg',
         },
         {
           name: 'Merili Põder',
           role: 'Ceremony organiser',
-          detail: 'Nurse in a palliative care ward',
+          detail: 'Palliative care nurse',
           img: 'merili.jpg',
         },
         {
