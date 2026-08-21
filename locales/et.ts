@@ -88,7 +88,7 @@ export default {
     },
     signature: {
       role: 'Kädy-Liis Vään',
-      detail: '„Tähistades elu" asutaja · õde palliatiivravi osakonnas',
+      detail: '„Tähistades elu" asutaja · Palliatiivravi õde',
     },
     team: {
       label: 'Meie inimesed',
