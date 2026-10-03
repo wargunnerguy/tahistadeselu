@@ -158,7 +158,7 @@ function sendEmailNotification(data, requestId) {
     ['Nimi',                data.nimi],
     ['E-post',              data.epost],
     ['Telefon',             data.telefon],
-    ['Tseremoonia ajavahemik', data.kuupaev],
+    ['Sobiv aeg kohtumiseks', data.kuupaev],
     ['Kogus',               data.kogus],
     ['Sõnum / lisainfo',    data.sonum || data.lisainfo]
   ].filter(function (pair) { return pair[1]; });
