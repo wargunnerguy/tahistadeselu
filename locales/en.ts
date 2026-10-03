@@ -76,7 +76,7 @@ export default {
       label: 'Our story',
       lead: "Death touches every one of us at some point. It doesn't ask about age, occupation, or whether we are ready. And yet it is a subject we rarely talk about. We keep putting these conversations off, hoping the right moment hasn't come yet.",
       paragraphs: [
-        'I too have lost people who were very dear to me. Over the years I have accompanied all of my grandparents on their final journey and attended many funerals. Although every person and every parting was different, I was left with the same feeling after each one — the ceremonies focused more on death than on the life the person had lived. The structure was always the same, and only the factual details changed in the celebrants\' speeches. Everything seemed "right", yet something essential was missing. The person themselves was missing.',
+        'I too have lost people who were very dear to me. Over the years I have accompanied all of my grandparents on their final journey and attended many funerals. Although every person and every parting was different, I was left with the same feeling after each one — the ceremonies focused more on death than on the life the person had lived. The structure was the same throughout, and only the factual details changed in the celebrants\' speeches. Everything seemed "right", yet something essential was missing. The person themselves was missing.',
         'The deepest mark was left by the unexpected passing of my grandmother at only 59. Her death came completely without warning and changed my world in an instant. The funeral ceremony, too, was a hard experience for me. It spoke nothing of her warmth, her humour, or her love of life. Everything only reminded me that she was gone. That experience stayed with me for years and followed me even in my dreams.',
         'Years passed, but the question remained. Does a farewell really have to be like that? Could it not instead help us remember a person as they truly were?',
         'Today I work as a nurse in a palliative care ward, meeting people at the end of their lives and their loved ones every day. I have seen how often people already know what kind of farewell they would wish for themselves. At the same time, it is very hard for their loved ones to talk about it. We avoid speaking about death for fear of causing pain, or because we are simply not ready to admit that a parting is near.',
@@ -174,7 +174,7 @@ export default {
     },
     pricing: {
       label: 'Pricing',
-      intro: 'Every celebration-of-life ceremony is personal. That is why the final quote is always prepared according to the client\'s wishes and chosen solutions. All prices include a personal approach and thorough preparation.',
+      intro: 'Every celebration-of-life ceremony is personal. That is why the final quote is prepared according to the client\'s wishes and chosen solutions. All prices include a personal approach and thorough preparation.',
       items: [
         {
           title: 'First meeting',
@@ -280,11 +280,11 @@ export default {
   broneeri: {
     seo: {
       title: 'Book a Free First Meeting — Tähistades Elu',
-      description: "Fill in the form and we'll be in touch within one business day. The first meeting (up to 45 minutes) is always free.",
+      description: "Fill in the form and we'll be in touch within one business day. The first meeting (up to 45 minutes) is free.",
     },
     eyebrow: 'Booking',
     title: "Let's start a conversation",
-    subtitle: "The first meeting (up to 45 minutes) is always free. Fill in the form and we'll be in touch within one business day.",
+    subtitle: "The first meeting (up to 45 minutes) is free. Fill in the form and we'll be in touch within one business day.",
     form: {
       type: 'My wish *',
       typeMeeting: 'I would like a free first meeting (up to 45 minutes)',

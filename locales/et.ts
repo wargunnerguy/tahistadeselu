@@ -174,7 +174,7 @@ export default {
     },
     pricing: {
       label: 'Hinnastamine',
-      intro: 'Iga elu tähistamise tseremoonia on personaalne. Seetõttu koostatakse lõplik hinnapakkumine alati vastavalt kliendi soovidele ja valitud lahendustele. Kõik hinnad sisaldavad personaalset lähenemist ning põhjalikku ettevalmistust.',
+      intro: 'Iga elu tähistamise tseremoonia on personaalne. Seetõttu koostatakse lõplik hinnapakkumine vastavalt kliendi soovidele ja valitud lahendustele. Kõik hinnad sisaldavad personaalset lähenemist ning põhjalikku ettevalmistust.',
       items: [
         {
           title: 'Esmane kohtumine',
@@ -280,11 +280,11 @@ export default {
   broneeri: {
     seo: {
       title: 'Broneeri tasuta esmane kohtumine — Tähistades Elu',
-      description: 'Täida päring ja võtame ühendust hiljemalt 1 tööpäeva jooksul. Esmane kohtumine (kuni 45 minutit) on alati tasuta.',
+      description: 'Täida päring ja võtame ühendust hiljemalt 1 tööpäeva jooksul. Esmane kohtumine (kuni 45 minutit) on tasuta.',
     },
     eyebrow: 'Broneering',
     title: 'Alustame vestlusega',
-    subtitle: 'Esmane kohtumine (kuni 45 minutit) on alati tasuta. Täitke päring ja võtame teiega ühendust hiljemalt 1 tööpäeva jooksul.',
+    subtitle: 'Esmane kohtumine (kuni 45 minutit) on tasuta. Täitke päring ja võtame teiega ühendust hiljemalt 1 tööpäeva jooksul.',
     form: {
       type: 'Minu soov *',
       typeMeeting: 'Soovin tasuta esmast kohtumist (kuni 45 minutit)',
