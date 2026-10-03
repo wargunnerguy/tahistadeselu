@@ -87,12 +87,15 @@ function appendToSheet(data, requestId) {
   var ss    = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName(SHEET_NAME);
 
-  // Create the sheet tab if it doesn't exist yet
+  // Create the sheet tab if it doesn't exist yet. These labels are deliberately
+  // the same as the ones on the live Päringud tab, so a recreated tab is not
+  // subtly different from the one everyone is used to reading. Rows are written
+  // by position below, never by header name — so the order here is what matters.
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.appendRow([
-      'Päringu nr', 'Aeg', 'Vormi tüüp', 'Soov', 'Nimi', 'E-post',
-      'Telefon', 'Tseremoonia ajavahemik', 'Sõnum / Lisainfo'
+      'ID', 'Timestamp', 'Tüüp', 'Soov', 'Nimi', 'Email',
+      'Tel nr', 'Soovitud ajavahemik', 'Sõnum'
     ]);
     // Freeze header row
     sheet.setFrozenRows(1);
