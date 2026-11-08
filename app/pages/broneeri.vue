@@ -58,6 +58,28 @@
             </div>
           </div>
 
+          <div v-if="form.tseremoonia === 'plan'">
+            <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.package') }}</p>
+            <div class="space-y-3">
+              <label
+                v-for="option in packageOptions"
+                :key="option.value"
+                class="flex items-start gap-3 cursor-pointer group"
+              >
+                <input
+                  v-model="form.pakett"
+                  type="radio"
+                  name="pakett"
+                  :value="option.value"
+                  class="mt-1 accent-stone-800"
+                />
+                <span class="text-sm font-light text-stone-600 group-hover:text-stone-800 transition-colors leading-relaxed">
+                  {{ option.label }}
+                </span>
+              </label>
+            </div>
+          </div>
+
           <div>
             <label class="block text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">{{ $t('broneeri.form.name') }}</label>
             <input
@@ -147,7 +169,7 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, tm } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 
@@ -165,8 +187,16 @@ const typeOptions = computed(() => [
   { value: 'organize', label: t('broneeri.form.typeOrganize') },
 ])
 
+// Pre-planning packages, shared with the home and teenused pages
+const packageOptions = computed(() => [
+  ...(tm('teenused.prePlanning.packages') as Array<{ id: string; title: string; price: string }>)
+    .map(p => ({ value: p.id, label: `${p.title} — ${p.price}` })),
+  { value: 'undecided', label: t('broneeri.form.packageUndecided') },
+])
+
 const form = reactive({
   tseremoonia: '',
+  pakett: '',
   nimi: '',
   epost: '',
   telefon: '',
@@ -180,6 +210,8 @@ const form = reactive({
 onMounted(() => {
   const type = route.query.type
   if (type === 'meeting' || type === 'plan' || type === 'organize') form.tseremoonia = type
+  const pkg = route.query.package
+  if (typeof pkg === 'string' && packageOptions.value.some(o => o.value === pkg)) form.pakett = pkg
 })
 
 const status = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -201,12 +233,19 @@ async function submit() {
     const fmt = (iso: string) => iso ? iso.split('-').reverse().join('.') : ''
     const kuupaev = [fmt(form.kuupaevAlates), fmt(form.kuupaevKuni)].filter(Boolean).join(' – ')
 
+    // The chosen package rides along in the existing tseremoonia column, so Code.gs needs no change
+    const typeLabel = typeOptions.value.find(o => o.value === form.tseremoonia)?.label ?? form.tseremoonia
+    const packageLabel = form.tseremoonia === 'plan'
+      ? packageOptions.value.find(o => o.value === form.pakett)?.label
+      : undefined
+    const tseremoonia = packageLabel ? `${typeLabel} — ${packageLabel}` : typeLabel
+
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({
         type: 'broneering',
-        tseremoonia: typeOptions.value.find(o => o.value === form.tseremoonia)?.label ?? form.tseremoonia,
+        tseremoonia,
         nimi: form.nimi,
         epost: form.epost,
         telefon: form.telefon,

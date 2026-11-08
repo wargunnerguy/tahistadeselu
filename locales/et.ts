@@ -6,6 +6,7 @@ export default {
     pood: 'Pood',
     broneeri: 'Broneeri',
     kontakt: 'Kontakt',
+    iseteenindus: 'Iseteenindus',
     close: 'Sulge menüü',
     open: 'Ava menüü',
   },
@@ -127,7 +128,7 @@ export default {
   teenused: {
     seo: {
       title: 'Teenused ja hinnad — Tähistades Elu',
-      description: 'Elu tähistamise tseremoonia eelplaneerimine alates 450 €, tseremoonia korraldamine alates 800 €. Esmane kohtumine (kuni 45 min) on tasuta.',
+      description: 'Elu tähistamise tseremoonia eelplaneerimine alates 49 €, tseremoonia korraldamine alates 800 €. Esmane kohtumine (kuni 45 min) on tasuta.',
     },
     eyebrow: 'Teenused',
     title: 'Iga elu väärib\noma lugu',
@@ -172,6 +173,53 @@ export default {
       closing: 'Soovime, et lähedased saaksid sellel päeval keskenduda üksteisele, mitte korralduslikele küsimustele.',
       motto: 'Ühtegi valmis lahendust ei ole – iga elu väärib oma lugu.',
     },
+    prePlanning: {
+      label: 'Eelplaneerimine',
+      title: 'Soovin planeerida oma elu tähistamise tseremooniat',
+      subtitle: 'Kolm paketti',
+      listLabel: 'Pakett sisaldab:',
+      cta: 'Vali pakett',
+      packages: [
+        {
+          id: 'self',
+          title: 'Iseseisev eelplaneerimine',
+          price: '49 €',
+          fit: 'Sobib Sulle, kui soovid oma mõtted privaatselt kirja panna.',
+          list: [
+            'piiramatu ligipääs iseteenindusele',
+          ],
+        },
+        {
+          id: 'supported',
+          title: 'Toetatud eelplaneerimine',
+          price: '179 €',
+          fit: 'Sobib Sulle, kui soovid enda mõtteid meiega arutada või vajad lihtsalt toetavat vestlust.',
+          list: [
+            'piiramatu ligipääs iseteenindusele',
+            '1,5-tunnine vestlus',
+            'vestluse käigus abi iseteeninduse täitmisel',
+          ],
+        },
+        {
+          id: 'personal',
+          title: 'Personaalne eelplaneerimine',
+          price: '450 €',
+          fit: 'Sobib Sulle, kui soovid meiega oma mõtteid ja ideid arutada ning vajad toetavat vestlust. Pakett hõlmab põhjalikumat personaalset lähenemist.',
+          list: [
+            'piiramatu ligipääs iseteenindusele',
+            '3-tunnine personaalne nõustamine',
+            'soovide põhjalik läbimõtlemine',
+            'soovi korral lähedaste kaasamine',
+            'vajadusel abi kogu info sisestamisel iseteenindusse',
+            'nõustamine muudes korraldusega seotud praktilistes küsimustes',
+          ],
+        },
+      ],
+      notes: [
+        'Iseteeninduses saad igal ajal infot juurde lisada, kustutada või muuta.',
+        'Sinu surma korral võtab märgitud kontaktisik meiega ühendust ning saadame talle kogu Sinu poolt kirja pandud informatsiooni.',
+      ],
+    },
     pricing: {
       label: 'Hinnastamine',
       intro: 'Iga elu tähistamise tseremoonia on personaalne. Seetõttu koostatakse lõplik hinnapakkumine vastavalt kliendi soovidele ja valitud lahendustele. Kõik hinnad sisaldavad personaalset lähenemist ning põhjalikku ettevalmistust.',
@@ -193,18 +241,13 @@ export default {
         },
         {
           title: 'Enda elu tähistamise tseremoonia eelplaneerimine',
-          price: 'Alates 450 €',
+          price: 'Alates 49 €',
           priceNote: '',
-          description: '',
-          listLabel: 'Teenus sisaldab:',
-          list: [
-            'personaalset konsultatsiooni (veebis või kohtumisel)',
-            'soovide ja ideede kaardistamist',
-            'elu tähistamise tseremoonia kontseptsiooni loomist',
-            'eluloo ja oluliste mälestuste koondamist',
-            'tseremoonia soovide dokumenteerimist',
-            'kirjalikku kokkuvõtet',
-          ],
+          description: 'Kolm paketti — vali endale sobiv.',
+          listLabel: 'Paketid:',
+          // Rows come from teenused.prePlanning.packages
+          showPackages: true,
+          list: [],
           notes: [
             'Kohale tulek Tartu linnas on tasuta. Mujal Eestis kokkuleppel.',
             'Soovi korral on võimalik lisatasu eest luua personaalne mälestusvideo või jäädvustada videopöördumine lähedastele.',
@@ -213,7 +256,7 @@ export default {
         },
         {
           title: 'Elu tähistamise tseremoonia korraldamine',
-          price: 'Alates 800 €',
+          price: 'Alates 800 €',
           priceNote: '',
           description: '',
           listLabel: 'Lõplik hind sõltub:',
@@ -290,6 +333,8 @@ export default {
       typeMeeting: 'Soovin tasuta esmast kohtumist (kuni 45 minutit)',
       typePlan: 'Soovin planeerida oma elu tähistamise tseremooniat',
       typeOrganize: 'Soovin korraldada elu tähistamise tseremoonia lähedasele',
+      package: 'Pakett',
+      packageUndecided: 'Ei ole veel kindel — soovin nõu',
       name: 'Nimi *',
       namePlaceholder: 'Teie nimi',
       email: 'E-post *',
@@ -313,7 +358,7 @@ export default {
   kontakt: {
     seo: {
       title: 'Kontakt — Tähistades Elu',
-      description: "Võta meiega ühendust: tahistadeselu{'@'}gmail.com, +372 5687 5675. Vastame kõikidele päringutele hiljemalt 1 tööpäeva jooksul.",
+      description: "Võta meiega ühendust: info{'@'}tahistadeselu.ee, +372 5687 5675. Vastame kõikidele päringutele hiljemalt 1 tööpäeva jooksul.",
     },
     eyebrow: 'Kontakt',
     title: 'Räägime',
@@ -359,7 +404,7 @@ export default {
     sections: [
       {
         title: 'Vastutav töötleja',
-        body: "Isikuandmete vastutav töötleja on LSCANDLES OÜ (registrikood 16894488), kes tegutseb kaubamärgi „Tähistades Elu\" all. Küsimuste korral kirjuta aadressile tahistadeselu{'@'}gmail.com.",
+        body: "Isikuandmete vastutav töötleja on LSCANDLES OÜ (registrikood 16894488), kes tegutseb kaubamärgi „Tähistades Elu\" all. Küsimuste korral kirjuta aadressile info{'@'}tahistadeselu.ee.",
       },
       {
         title: 'Milliseid andmeid kogume',
@@ -379,7 +424,7 @@ export default {
       },
       {
         title: 'Sinu õigused',
-        body: "Sul on igal ajal õigus küsida, milliseid andmeid me sinu kohta hoiame, ning paluda nende parandamist või kustutamist. Kirjuta selleks aadressile tahistadeselu{'@'}gmail.com.",
+        body: "Sul on igal ajal õigus küsida, milliseid andmeid me sinu kohta hoiame, ning paluda nende parandamist või kustutamist. Kirjuta selleks aadressile info{'@'}tahistadeselu.ee.",
       },
       {
         title: 'Küpsised',

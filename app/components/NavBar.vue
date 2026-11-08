@@ -35,6 +35,14 @@
               {{ $t(link.key) }}
             </NuxtLink>
           </li>
+          <li>
+            <a
+              :href="portalUrl"
+              class="text-xs tracking-[0.2em] uppercase text-white border border-white/40 px-4 py-2 hover:bg-white hover:text-stone-900 transition-colors duration-200"
+            >
+              {{ $t('nav.iseteenindus') }}
+            </a>
+          </li>
         </ul>
 
         <!-- Language switcher -->
@@ -86,6 +94,14 @@
             {{ $t(link.key) }}
           </NuxtLink>
         </li>
+        <li>
+          <a
+            :href="portalUrl"
+            class="text-2xl font-extralight tracking-[0.25em] uppercase text-white border border-white/40 px-6 py-3 hover:bg-white hover:text-stone-900 transition-colors duration-200"
+          >
+            {{ $t('nav.iseteenindus') }}
+          </a>
+        </li>
       </ul>
 
       <!-- Mobile language switcher -->
@@ -132,6 +148,10 @@ const links = [
   { to: '/broneeri', key: 'nav.broneeri' },
   { to: '/kontakt', key: 'nav.kontakt' },
 ]
+
+// Self-service portal runs on its own server, not GitHub Pages — a plain absolute
+// link so neither the router nor the i18n /en prefix touches it
+const portalUrl = 'https://iseteenindus.tahistadeselu.ee'
 
 onMounted(() => {
   const onScroll = () => { scrolled.value = window.scrollY > 60 }

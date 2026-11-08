@@ -68,8 +68,13 @@
       </div>
     </section>
 
+    <!-- Pre-planning packages -->
+    <section id="paketid" class="py-24 px-6 bg-stone-50 scroll-mt-16">
+      <PrePlanningPackages />
+    </section>
+
     <!-- Pricing -->
-    <section class="py-24 px-6 bg-stone-50">
+    <section class="py-24 px-6 bg-white">
       <div class="max-w-5xl mx-auto">
         <p class="text-xs tracking-[0.3em] uppercase text-stone-400 mb-8 text-center">
           {{ $t('teenused.pricing.label') }}
@@ -78,12 +83,12 @@
           {{ $t('teenused.pricing.intro') }}
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           <div
             v-for="(item, i) in pricingItems"
             :key="i"
             :class="[
-              'flex flex-col p-10 h-full transition-shadow duration-300 hover:shadow-xl',
+              'flex flex-col p-8 sm:p-10 lg:p-8 h-full transition-shadow duration-300 hover:shadow-xl',
               i === 0 ? 'bg-stone-900' : 'bg-white border border-stone-200 hover:border-stone-400',
             ]"
           >
@@ -124,7 +129,18 @@
             <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mt-8 mb-4">
               {{ item.listLabel }}
             </p>
-            <ul class="space-y-3 flex-1">
+            <!-- Package name left, price right, each kept on one line -->
+            <ul v-if="item.showPackages" class="space-y-3 flex-1">
+              <li
+                v-for="pkg in packages"
+                :key="pkg.id"
+                :class="['flex flex-wrap items-baseline justify-between gap-x-4 text-sm font-light', i === 0 ? 'text-stone-300' : 'text-stone-500']"
+              >
+                <span class="whitespace-nowrap">{{ pkg.title }}</span>
+                <span :class="['whitespace-nowrap ml-auto', i === 0 ? 'text-white' : 'text-stone-700']">{{ pkg.price }}</span>
+              </li>
+            </ul>
+            <ul v-else class="space-y-3 flex-1">
               <li
                 v-for="(entry, j) in item.list"
                 :key="j"
@@ -178,6 +194,8 @@ useSeoMeta({
   ogImage: 'https://tahistadeselu.ee/og-image.jpg',
 })
 
+useScrollReveal()
+
 const titleRaw = computed(() => t('teenused.title'))
 const titleLine1 = computed(() => titleRaw.value.split('\n')[0] ?? '')
 const titleLine2 = computed(() => titleRaw.value.split('\n')[1] ?? '')
@@ -198,12 +216,14 @@ interface PricingItem {
   description?: string
   listLabel: string
   list: string[]
+  showPackages?: boolean
   notes?: string[]
   cta: string
 }
 
 const services = computed(() => tm('teenused.services.items') as ServiceItem[])
 const pricingItems = computed(() => tm('teenused.pricing.items') as PricingItem[])
+const packages = computed(() => tm('teenused.prePlanning.packages') as Array<{ id: string; title: string; price: string }>)
 
 const localePath = useLocalePath()
 

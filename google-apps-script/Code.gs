@@ -4,7 +4,7 @@
 // ============================================================
 
 // ── CONFIG ── replace before deploying ──────────────────────
-var NOTIFICATION_EMAIL = 'tahistadeselu@gmail.com';
+var NOTIFICATION_EMAIL = 'info@tahistadeselu.ee';
 var SHEET_NAME         = 'Päringud';               // ← sheet tab name
 var ID_SEED            = 1263;                     // ← first ID will be TE-1264
 // ────────────────────────────────────────────────────────────

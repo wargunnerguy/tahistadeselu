@@ -30,10 +30,10 @@
               <li>
                 <p class="text-xs tracking-[0.2em] uppercase text-stone-400 mb-1">{{ $t('kontakt.emailLabel') }}</p>
                 <a
-                  href="mailto:tahistadeselu@gmail.com"
+                  href="mailto:info@tahistadeselu.ee"
                   class="text-stone-700 font-light text-sm hover:text-stone-400 transition-colors"
                 >
-                  tahistadeselu@gmail.com
+                  info@tahistadeselu.ee
                 </a>
               </li>
               <li>

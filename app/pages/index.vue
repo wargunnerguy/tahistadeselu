@@ -53,7 +53,7 @@
         </p>
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
           <NuxtLink
-            :to="{ path: localePath('/broneeri'), query: { type: 'plan' } }"
+            :to="{ hash: '#paketid' }"
             class="flex items-center justify-center text-center min-h-[72px] bg-white text-stone-900 text-xs tracking-[0.18em] uppercase leading-relaxed px-8 py-4 hover:bg-stone-100 hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-black/20"
           >
             {{ $t('home.ctaPlan') }}
@@ -92,6 +92,11 @@
           {{ $t('home.shift.body2') }}
         </p>
       </div>
+    </section>
+
+    <!-- ░░ 2b. PRE-PLANNING PACKAGES ░░ (hero "plan" CTA scrolls here) -->
+    <section id="paketid" class="py-32 px-6 bg-stone-50 scroll-mt-16">
+      <PrePlanningPackages />
     </section>
 
     <!-- ░░ 3. WHAT WE DO — value props ░░ -->
@@ -236,7 +241,7 @@
         <div data-reveal data-delay="380" class="flex items-center justify-center gap-8 text-stone-500 text-sm font-light">
           <a href="tel:+37256875675" class="hover:text-white transition-colors duration-200">+372 5687 5675</a>
           <span class="text-stone-700">—</span>
-          <a href="mailto:tahistadeselu@gmail.com" class="hover:text-white transition-colors duration-200">tahistadeselu@gmail.com</a>
+          <a href="mailto:info@tahistadeselu.ee" class="hover:text-white transition-colors duration-200">info@tahistadeselu.ee</a>
         </div>
       </div>
     </section>

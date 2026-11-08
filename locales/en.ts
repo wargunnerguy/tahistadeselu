@@ -6,6 +6,7 @@ export default {
     pood: 'Shop',
     broneeri: 'Book',
     kontakt: 'Contact',
+    iseteenindus: 'Self-service',
     close: 'Close menu',
     open: 'Open menu',
   },
@@ -127,7 +128,7 @@ export default {
   teenused: {
     seo: {
       title: 'Services & Pricing — Tähistades Elu',
-      description: 'Pre-planning a celebration-of-life ceremony from €450, organising a ceremony from €800. The first meeting (up to 45 min) is free.',
+      description: 'Pre-planning a celebration-of-life ceremony from €49, organising a ceremony from €800. The first meeting (up to 45 min) is free.',
     },
     eyebrow: 'Services',
     title: 'Every life deserves\nits own story',
@@ -172,6 +173,53 @@ export default {
       closing: 'We want loved ones to be able to focus on each other on that day — not on practical arrangements.',
       motto: 'There are no ready-made solutions — every life deserves its own story.',
     },
+    prePlanning: {
+      label: 'Pre-planning',
+      title: 'I want to plan my own celebration-of-life ceremony',
+      subtitle: 'Three packages',
+      listLabel: 'The package includes:',
+      cta: 'Choose package',
+      packages: [
+        {
+          id: 'self',
+          title: 'Independent pre-planning',
+          price: '€49',
+          fit: 'Right for you if you would like to write down your thoughts privately.',
+          list: [
+            'unlimited access to the self-service portal',
+          ],
+        },
+        {
+          id: 'supported',
+          title: 'Supported pre-planning',
+          price: '€179',
+          fit: 'Right for you if you would like to talk your thoughts through with us, or simply need a supportive conversation.',
+          list: [
+            'unlimited access to the self-service portal',
+            'a 1.5-hour conversation',
+            'help filling in the self-service portal during the conversation',
+          ],
+        },
+        {
+          id: 'personal',
+          title: 'Personal pre-planning',
+          price: '€450',
+          fit: 'Right for you if you would like to discuss your thoughts and ideas with us and need a supportive conversation. The package takes a more thorough, personal approach.',
+          list: [
+            'unlimited access to the self-service portal',
+            '3 hours of personal guidance',
+            'thinking your wishes through in depth',
+            'involving your loved ones, if you wish',
+            'help entering all the information into the self-service portal, if needed',
+            'advice on other practical arrangements',
+          ],
+        },
+      ],
+      notes: [
+        'In the self-service portal you can add, delete or change information at any time.',
+        'In the event of your death, your chosen contact person gets in touch with us and we send them everything you have written down.',
+      ],
+    },
     pricing: {
       label: 'Pricing',
       intro: 'Every celebration-of-life ceremony is personal. That is why the final quote is prepared according to the client\'s wishes and chosen solutions. All prices include a personal approach and thorough preparation.',
@@ -193,18 +241,13 @@ export default {
         },
         {
           title: 'Pre-planning your own celebration-of-life ceremony',
-          price: 'From €450',
+          price: 'From €49',
           priceNote: '',
-          description: '',
-          listLabel: 'The service includes:',
-          list: [
-            'a personal consultation (online or in person)',
-            'mapping your wishes and ideas',
-            'creating the celebration-of-life ceremony concept',
-            'gathering your life story and important memories',
-            'documenting your ceremony wishes',
-            'a written summary',
-          ],
+          description: 'Three packages — choose the one that suits you.',
+          listLabel: 'Packages:',
+          // Rows come from teenused.prePlanning.packages
+          showPackages: true,
+          list: [],
           notes: [
             'Visits within the city of Tartu are free of charge. Elsewhere in Estonia by agreement.',
             'For an additional fee, we can create a personal memorial video or record a video message for your loved ones.',
@@ -290,6 +333,8 @@ export default {
       typeMeeting: 'I would like a free first meeting (up to 45 minutes)',
       typePlan: 'I want to plan my own celebration-of-life ceremony',
       typeOrganize: 'I want to arrange a celebration-of-life ceremony for a loved one',
+      package: 'Package',
+      packageUndecided: 'Not sure yet — I would like advice',
       name: 'Name *',
       namePlaceholder: 'Your name',
       email: 'Email *',
@@ -313,7 +358,7 @@ export default {
   kontakt: {
     seo: {
       title: 'Contact — Tähistades Elu',
-      description: "Get in touch: tahistadeselu{'@'}gmail.com, +372 5687 5675. We reply to all enquiries within one business day.",
+      description: "Get in touch: info{'@'}tahistadeselu.ee, +372 5687 5675. We reply to all enquiries within one business day.",
     },
     eyebrow: 'Contact',
     title: "Let's talk",
@@ -359,7 +404,7 @@ export default {
     sections: [
       {
         title: 'Data controller',
-        body: "The controller of your personal data is LSCANDLES OÜ (registry code 16894488), operating under the brand “Tähistades Elu”. For any questions, write to tahistadeselu{'@'}gmail.com.",
+        body: "The controller of your personal data is LSCANDLES OÜ (registry code 16894488), operating under the brand “Tähistades Elu”. For any questions, write to info{'@'}tahistadeselu.ee.",
       },
       {
         title: 'What data we collect',
@@ -379,7 +424,7 @@ export default {
       },
       {
         title: 'Your rights',
-        body: "You can ask at any time what data we hold about you, and request that it be corrected or deleted. Just write to tahistadeselu{'@'}gmail.com.",
+        body: "You can ask at any time what data we hold about you, and request that it be corrected or deleted. Just write to info{'@'}tahistadeselu.ee.",
       },
       {
         title: 'Cookies',
